@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+    <title id="appTitle">Study Allowance App</title>
+    
+    <!-- PWA 메타 태그 -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta id="pwaTitle" name="apple-mobile-web-app-title" content="Study Allowance">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- CSS (현재 파일 자체가 미니파이된 상태) -->
+    <link rel="stylesheet" href="css/onboarding.css">
+    <link rel="stylesheet" href="css/onboarding.dark.css" media="(prefers-color-scheme: dark)">
+    <link id="themeStylesheet" rel="stylesheet" href="css/main.css?v=2.5">
+    <script>
+        (function () {
+            const themeLink = document.getElementById('themeStylesheet');
+            if (!themeLink || !window.matchMedia) return;
+
+            const updateTheme = () => {
+                const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                themeLink.href = isDark ? 'css/main.dark.css?v=2.5' : 'css/main.css?v=2.5';
+            };
+
+            updateTheme();
+            const media = window.matchMedia('(prefers-color-scheme: dark)');
+            if (typeof media.addEventListener === 'function') {
+                media.addEventListener('change', updateTheme);
+            } else if (typeof media.addListener === 'function') {
+                media.addListener(updateTheme);
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- ========================================
+         온보딩 화면
+    ======================================== -->
+    <div id="onboardingView" class="onboarding-container" style="display: none;">
+        
+        <!-- 1단계: 언어 선택 -->
+        <div id="onboardingStep1" class="onboarding-step active">
+            <div class="onboarding-box">
+                <h1 id="languageTitle"></h1>
+                <p id="languageDetected"></p>
+                <div class="language-select-wrapper">
+                    <label for="onboardingLanguageSelector"></label>
+                    <select id="onboardingLanguageSelector"></select>
+                </div>
+                <p id="languageSubtitle" class="language-subtitle"></p>
+                <button id="languageNextBtn" class="next-btn"></button>
+                <button id="onboardingLoadDataBtn" class="load-data-btn" type="button" aria-label="저장된 DATA 불러오기"><span class="load-data-btn-icon">📂</span> <span class="load-data-btn-text"></span></button>
+            </div>
+        </div>
+
+        <!-- 2단계: 환영 가이드 -->
+        <div id="onboardingStep2" class="onboarding-step">
+            <div class="onboarding-box">
+                <h1 id="welcomeTitle"></h1>
+                <div id="welcomeMessage"></div>
+                <button id="welcomeNextBtn" class="next-btn"></button>
+            </div>
+        </div>
+
+        <!-- 3단계: 이름 입력 -->
+        <div id="onboardingStep3" class="onboarding-step">
+            <div class="onboarding-box">
+                <h1 id="nameTitle"></h1>
+                <p id="nameDesc"></p>
+                <div class="name-input-wrapper">
+                    <label for="onboardingNameInput"></label>
+                    <input type="text" id="onboardingNameInput">
+                    <div id="nameError" class="error-message"></div>
+                </div>
+                <button id="nameNextBtn" class="next-btn"></button>
+            </div>
+        </div>
+
+        <!-- 4단계: 국가별 초기 설정 (백그라운드) -->
+        <div id="onboardingStep4" class="onboarding-step" style="display: none;">
+            <div class="onboarding-box">
+                <div id="countryError" class="error-message"></div>
+            </div>
+        </div>
+
+        <!-- 5단계: 과목 설정 -->
+        <div id="onboardingStep5" class="onboarding-step">
+            <div class="onboarding-box">
+                <h1 id="onboardingSubjectsTitle"></h1>
+                <div class="settings-section">
+                    <p id="onboardingSubjectsDescription" class="onboarding-description"></p>
+                    <div id="onboardingSubjectsList"></div>
+                    <button id="onboardingAddSubjectBtn" class="add-btn"></button>
+                </div>
+                <button id="onboardingSubjectsNextBtn" class="next-btn"></button>
+            </div>
+        </div>
+
+        <!-- 6단계: 이달의 목표 설정 -->
+        <div id="onboardingStep6" class="onboarding-step">
+            <div class="onboarding-box">
+                <h1 id="onboardingGoalTitle"></h1>
+                <div class="settings-section goal-section">
+                    <div class="goal-inputs-container">
+                        <div class="goal-input-group">
+                            <label for="onboardingTargetDaysInput" id="onboardingGoalDaysLabel" class="goal-label"></label>
+                            <div class="goal-input-wrapper">
+                                <input type="number" id="onboardingTargetDaysInput" min="20" max="31" class="goal-input">
+                            </div>
+                        </div>
+                        <div class="goal-input-group">
+                            <label for="onboardingBonusAmountInput" id="onboardingGoalBonusLabel" class="goal-label"></label>
+                            <div class="goal-input-wrapper">
+                                <input type="number" id="onboardingBonusAmountInput" min="0" class="goal-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="onboardingGoalInfo" class="goal-info"></div>
+                </div>
+                <button id="onboardingGoalNextBtn" class="next-btn"></button>
+            </div>
+        </div>
+
+        <!-- 7단계: 완료 -->
+        <div id="onboardingStep8" class="onboarding-step">
+            <div class="onboarding-box">
+                <h1 id="completeTitle"></h1>
+                <div id="completeMessage"></div>
+                <button id="completeStartBtn" class="start-btn"></button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================
+         메인 앱
+    ======================================== -->
+    <div id="appContainer" class="container app-container" style="display: none;">
+        <div class="custom-status-bar">
+            <div class="status-time" id="statusTime"></div>
+            <div class="status-info" id="statusInfo"></div>
+        </div>
+
+        <div class="scroll-content">
+        <header id="header" class="header fixed-header">
+            <img src="Img/STUDY.PNG" alt="Study" class="header-image">
+            <button id="settingsBtn" class="settings-btn" aria-label="Settings">⚙️</button>
+            <div class="title-section">
+                <h1 id="userNameDisplay" class="user-name"></h1>
+                <h2 id="appSubtitle" class="app-subtitle"></h2>
+            </div>
+            <button id="calendarBtn" class="calendar-btn" aria-label="Calendar">
+                <img src="Img/calender.png" alt="Calendar" class="calendar-icon">
+            </button>
+        </header>
+        
+            <!-- 설정 모달 -->
+            <div id="settingsModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="settingsTitle"></h2>
+                        <button id="closeSettings" class="close-btn" aria-label="Close">&times;</button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <!-- 섬 1: 저장 필요 설정 -->
+                        <div class="settings-island settings-island-primary">
+                            <!-- 과목 설정 -->
+                            <div class="settings-section">
+                                <div class="settings-section-header">
+                                    <h3 id="settingsSubjectsTitle"></h3>
+                                    <span class="info-link" id="subjectsInfoBtn" role="button" tabindex="0" aria-label="Info" title="도움말"></span>
+                                </div>
+                                <div id="subjectsSettingsList"></div>
+                                <button id="addSubjectBtn" class="add-btn"></button>
+                            </div>
+                            
+                            <div class="settings-divider compact-divider"></div>
+                            
+                            <!-- 이달의 목표 -->
+                            <div class="settings-section goal-section">
+                                <div class="settings-section-header">
+                                    <h3 id="goalTitle"></h3>
+                                    <span class="info-link" id="goalInfoBtn" role="button" tabindex="0" aria-label="Info" title="도움말"></span>
+                                </div>
+                                <div class="goal-inputs-container">
+                                    <div class="goal-input-group">
+                                        <label for="targetDaysInput" id="goalDaysLabel" class="goal-label"></label>
+                                        <div class="goal-input-wrapper">
+                                            <input type="number" id="targetDaysInput" min="20" max="31" class="goal-input">
+                                        </div>
+                                    </div>
+                                    <div class="goal-input-group">
+                                        <label for="bonusAmountInput" id="goalBonusLabel" class="goal-label"></label>
+                                        <div class="goal-input-wrapper">
+                                            <input type="number" id="bonusAmountInput" min="0" class="goal-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-save-container">
+                                <button id="saveSettingsBtn" class="save-btn"></button>
+                            </div>
+                        </div>
+                        
+                        <!-- 섬 2: 즉시 적용 설정 -->
+                        <div class="settings-island settings-island-secondary">
+                            <div class="settings-donation-container">
+                                <button type="button" id="donateDeveloperBtn" class="donate-developer-btn"></button>
+                            </div>
+
+                            <!-- 웹 + 한국어 전용: 카카오뱅크 계좌 안내 (네이티브 앱에서는 표시 안 함) -->
+                            <div id="webKoDonationContainer" class="settings-web-ko-donation-container" hidden>
+                                <button type="button" id="webKoDonationBtn" class="web-ko-donation-btn">
+                                    <span class="web-ko-donation-title"></span>
+                                    <span class="web-ko-donation-account"></span>
+                                </button>
+                            </div>
+
+                            <div class="settings-divider"></div>
+
+                            <!-- 공부 확정(잠금) 프리미엄 — rate-app-btn과 시각적으로 분리 -->
+                            <div class="settings-section lock-section">
+                                <div class="lock-feature-card">
+                                    <div class="lock-feature-card-head">
+                                        <span class="lock-feature-icon" aria-hidden="true">🔒</span>
+                                        <h3 id="lockSectionTitle" class="lock-feature-title">잠금 기능</h3>
+                                    </div>
+                                    <p id="lockSectionDescription" class="lock-feature-desc"></p>
+                                    <button type="button" id="lockFeatureBtn" class="lock-feature-btn"></button>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-divider"></div>
+                            
+                            <!-- 글자 크기: 1=50%, 2=75%, 3=100%(기본), 4=125%, 5=150% -->
+                            <div class="settings-section font-size-section">
+                                <h3 id="fontSizeTitle">글자 크기</h3>
+                                <div class="font-size-slider-wrap" role="group" aria-label="글자 크기">
+                                    <div class="font-size-track">
+                                        <span class="font-size-track-line" aria-hidden="true"></span>
+                                        <div class="font-size-dots-row">
+                                            <div class="font-size-step"><button type="button" class="font-size-dot" data-level="1" aria-pressed="false" aria-label="1"></button></div>
+                                            <div class="font-size-step"><button type="button" class="font-size-dot" data-level="2" aria-pressed="false" aria-label="2"></button></div>
+                                            <div class="font-size-step"><button type="button" class="font-size-dot" data-level="3" aria-pressed="false" aria-label="3"></button></div>
+                                            <div class="font-size-step"><button type="button" class="font-size-dot" data-level="4" aria-pressed="false" aria-label="4"></button></div>
+                                            <div class="font-size-step"><button type="button" class="font-size-dot" data-level="5" aria-pressed="false" aria-label="5"></button></div>
+                                        </div>
+                                        <div class="font-size-numbers">
+                                            <button type="button" class="font-size-num" data-level="1">1</button>
+                                            <button type="button" class="font-size-num" data-level="2">2</button>
+                                            <button type="button" class="font-size-num" data-level="3">3</button>
+                                            <button type="button" class="font-size-num" data-level="4">4</button>
+                                            <button type="button" class="font-size-num" data-level="5">5</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-divider"></div>
+                            <!-- 구글플레이 평점 -->
+                            <div class="settings-rate-app-container">
+                                <button id="rateAppBtn" class="rate-app-btn"></button>
+                            </div>
+
+                            <div class="settings-divider"></div>
+                            
+                            <!-- 데이터 관리 -->
+                            <div class="settings-section" data-section="data">
+                                <h3 id="dataTitle" class="data-title-toggle"></h3>
+                                <div class="data-buttons-container" id="dataButtonsContainer" style="display: none;">
+                                    <button id="exportDataBtn" class="data-btn export"></button>
+                                    <button id="importDataBtn" class="data-btn import"></button>
+                                    <input type="file" id="fileInput" style="display: none;" accept=".json">
+                                    <button id="resetDataBtn" class="data-btn reset"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 요약 섹션 -->
+            <section id="summary" class="summary-section">
+                <div class="summary-header">
+                    <h2 id="summaryTitle" class="summary-title"></h2>
+                    <div id="totalAllowance" class="total-amount"></div>
+                    <div id="goalAchievedBadge" class="goal-achieved-badge" style="display: none;">
+                        <span id="goalAchievedText" class="goal-achieved-text"></span>
+                    </div>
+                </div>
+                
+                <div class="summary-progress">
+                    <div class="progress-bar-wrapper">
+                        <div id="progressBar" class="progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="progress-label-container">
+                        <div id="progressLabel" class="progress-percentage"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 날짜 탐색 -->
+            <nav id="navDate" class="date-navigation">
+                <button id="prevDate" class="date-btn arrow-left" aria-label="Previous Day"></button>
+                <div id="currentDate" class="current-date"></div>
+                <button id="nextDate" class="date-btn arrow-right" aria-label="Next Day"></button>
+            </nav>
+
+            <!-- 메인 뷰 (날짜별) -->
+            <main id="mainView">
+                <!-- 과목 그리드 -->
+                <section id="subjects" class="subjects-section">
+                    <div id="subjectsGrid" class="subjects-grid"></div>
+                </section>
+                
+                <!-- 추가 용돈 -->
+                <section id="extras" class="additional-section">
+                    <h3 id="bonusTitle" class="bonus-title"></h3>
+                    <div class="add-additional">
+                        <input type="text" id="additionalReason" placeholder="사유">
+                        <input type="number" id="additionalAmount" min="0" placeholder="금액">
+                        <button id="addAdditionalBtn"></button>
+                    </div>
+                    <div id="additionalList" class="additional-list"></div>
+                </section>
+                
+                <!-- 잠금 버튼 (프리미엄, 잠금 기능 구매 후 표시) -->
+                <button id="lockToggleBtn" class="lock-toggle-btn" style="display: none;">
+                    과목 잠그기
+                </button>
+            </main>
+
+            <!-- 달력 뷰 (월별) -->
+            <main id="calendarView" style="display: none;">
+                <nav id="monthNav" class="month-navigation">
+                    <button id="prevMonth" class="date-btn arrow-left" aria-label="Previous Month"></button>
+                    <div id="calendarMonth" class="current-date"></div>
+                    <button id="nextMonth" class="date-btn arrow-right" aria-label="Next Month"></button>
+                </nav>
+                
+                <div id="calendarGrid" class="calendar-grid-container">
+                    <div class="calendar-weekdays"></div>
+                    <div class="calendar-grid"></div>
+                </div>
+            </main>
+        
+        </div>
+    </div>
+
+    <!-- 동적 컨테이너 -->
+    <div id="popupContainer"></div>
+    <div id="confetti" class="confetti"></div>
+    
+    <!-- 종료 확인 팝업 -->
+    <div id="exitModal" class="exit-modal" style="display: none;">
+        <div class="exit-modal-content">
+            <h3 id="exitModalTitle"></h3>
+            <p id="exitModalMessage"></p>
+            <div class="exit-modal-buttons">
+                <button id="exitCancelBtn" class="exit-btn cancel"></button>
+                <button id="exitConfirmBtn" class="exit-btn confirm"></button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 설정 저장 확인 팝업 -->
+    <div id="saveConfirmModal" class="save-confirm-modal" style="display: none;">
+        <div class="save-confirm-modal-content">
+            <h3 id="saveConfirmTitle"></h3>
+            <p id="saveConfirmMessage"></p>
+            <div class="save-confirm-buttons">
+                <button id="saveConfirmCancelBtn" class="save-confirm-btn cancel"></button>
+                <button id="saveConfirmOkBtn" class="save-confirm-btn ok"></button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 단순 알림 팝업 -->
+    <div id="alertModal" class="alert-modal" style="display: none;">
+        <div class="alert-modal-content">
+            <h3 id="alertModalTitle"></h3>
+            <div id="alertModalMessage" class="alert-modal-message"></div>
+            <div class="alert-modal-buttons">
+                <button id="alertModalOkBtn" class="alert-btn ok"></button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 확인 팝업 -->
+    <div id="confirmModal" class="confirm-modal" style="display: none;">
+        <div class="confirm-modal-content">
+            <h3 id="confirmModalTitle"></h3>
+            <div id="confirmModalMessage" class="confirm-modal-message"></div>
+            <div class="confirm-modal-buttons">
+                <button id="confirmModalCancelBtn" class="confirm-btn cancel"></button>
+                <button id="confirmModalOkBtn" class="confirm-btn ok"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 잠금 비밀번호 4자리 입력 (키패드) -->
+    <div id="pinModal" class="pin-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="pinModalTitle">
+        <div class="pin-modal-backdrop"></div>
+        <div class="pin-modal-content">
+            <div class="pin-modal-head">
+                <h3 id="pinModalTitle" class="pin-modal-title"></h3>
+                <p id="pinModalMessage" class="pin-modal-message" hidden></p>
+            </div>
+            <div class="pin-dots" id="pinDots" aria-label="4자리 비밀번호">
+                <span class="pin-dot" data-index="0"></span>
+                <span class="pin-dot" data-index="1"></span>
+                <span class="pin-dot" data-index="2"></span>
+                <span class="pin-dot" data-index="3"></span>
+            </div>
+            <p id="pinModalHint" class="pin-modal-hint" hidden></p>
+            <div class="pin-keypad">
+                <button type="button" class="pin-key" data-digit="1">1</button>
+                <button type="button" class="pin-key" data-digit="2">2</button>
+                <button type="button" class="pin-key" data-digit="3">3</button>
+                <button type="button" class="pin-key" data-digit="4">4</button>
+                <button type="button" class="pin-key" data-digit="5">5</button>
+                <button type="button" class="pin-key" data-digit="6">6</button>
+                <button type="button" class="pin-key" data-digit="7">7</button>
+                <button type="button" class="pin-key" data-digit="8">8</button>
+                <button type="button" class="pin-key" data-digit="9">9</button>
+                <button type="button" class="pin-key pin-key-empty"></button>
+                <button type="button" class="pin-key" data-digit="0">0</button>
+                <button type="button" class="pin-key pin-key-backspace" data-action="backspace" aria-label="지우기">⌫</button>
+            </div>
+            <div class="pin-modal-buttons">
+                <button type="button" id="pinModalCancelBtn" class="pin-modal-btn cancel"></button>
+                <button type="button" id="pinModalOkBtn" class="pin-modal-btn ok" disabled></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 설정 도움말 팝업 (과목/목표 [?] 버튼) -->
+    <div id="settingsInfoPopup" class="settings-info-popup" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="settingsInfoPopupTitle">
+        <div class="settings-info-popup-backdrop"></div>
+        <div class="settings-info-popup-content">
+            <div class="settings-info-popup-body" id="settingsInfoPopupBody"></div>
+            <button type="button" class="settings-info-popup-close" id="settingsInfoPopupClose"></button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- Service Worker -->
+    <!--
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('서비스 워커 등록 성공!', reg))
+                    .catch(err => console.log('서비스 워커 등록 실패 ㅠㅠ', err));
+            });
+        }
+    </script>
+    -->
+</body>
+</html>

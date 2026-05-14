@@ -1,0 +1,159 @@
+.onboarding-container{background:linear-gradient(135deg,#111827 0,#1f2937 50%,#111827 100%);--color-text-primary:#e5e7eb;--color-text-secondary:#cbd5f5;--color-text-tertiary:#a7b1c2;--color-border:#2b3340;--color-bg-light:#1f2530;--color-error:#f87171;--shadow-sm:0 2px 8px rgba(0, 0, 0, 0.35);--shadow-md:0 5px 15px rgba(0, 0, 0, 0.45);--shadow-lg:0 8px 20px rgba(0, 0, 0, 0.55);--shadow-danger:0 2px 8px rgba(248, 113, 113, 0.35)}.onboarding-box{background:rgba(20,24,32,.98);box-shadow:0 15px 40px rgba(0,0,0,.45)}#welcomeMessage{color:#e2e8f0;background-color:rgba(31,37,48,.85)}.onboarding-description{background-color:#1f2530;border-left-color:#7b88f7}.language-subtitle{color:#9aa6b2}#onboardingLanguageSelector,#onboardingNameInput,.goal-input,.onboarding-input-field{background-color:#141820;border-color:#2b3340;color:#e5e7eb}#onboardingLanguageSelector:focus,#onboardingNameInput:focus,.goal-input:focus,.onboarding-input-field:focus{background-color:#141820;border-color:#7b88f7;box-shadow:0 0 0 3px rgba(123,136,247,.25)}.goal-input-wrapper .currency-symbol{color:#c7d0de}#onboardingSubjectsList .subject-setting-item{background:linear-gradient(135deg,#1f2530 0,#1a2029 100%);border-color:#2b3340;box-shadow:0 2px 10px rgba(0,0,0,.45)}#onboardingSubjectsList .subject-setting-item:hover{border-color:#7b88f7;box-shadow:0 8px 20px rgba(0,0,0,.5)}#onboardingSubjectsList .subject-setting-item .subject-number{background:linear-gradient(135deg,#5c6cf2 0,#6a5fa8 100%);color:#f1f5f9;box-shadow:0 4px 12px rgba(30,40,80,.45)}#onboardingSubjectsList .subject-setting-item .subject-amount-input,#onboardingSubjectsList .subject-setting-item .subject-name-input{background:#141820;border-color:#2b3340;color:#c7cfda}#onboardingSubjectsList .subject-setting-item .subject-amount-input:hover,#onboardingSubjectsList .subject-setting-item .subject-name-input:hover{border-color:#3a4557;box-shadow:0 2px 8px rgba(0,0,0,.4)}#onboardingSubjectsList .subject-setting-item .subject-amount-input:focus,#onboardingSubjectsList .subject-setting-item .subject-name-input:focus{border-color:#7b88f7;box-shadow:0 0 0 4px rgba(123,136,247,.2)}#onboardingSubjectsList .subject-setting-item .subject-amount-wrapper .currency-symbol{color:#9fb0ff}.custom-popup-overlay{background:rgba(0,0,0,.8)}.custom-popup{background:#1b2029;box-shadow:0 20px 60px rgba(0,0,0,.6);border:1px solid rgba(123,136,247,.15)}.custom-popup::before{background:linear-gradient(90deg,#7b88f7 0,#6a5fa8 50%,#7b88f7 100%)}.custom-popup-warning{background:linear-gradient(135deg,#232a35 0,#1b2029 100%);border-color:rgba(251,191,36,.35)}.custom-popup-warning::before{background:linear-gradient(90deg,#fbbf24 0,#f59e0b 50%,#fbbf24 100%)}.custom-popup-warning .custom-popup-message{color:#fcd34d}.custom-popup-error{background:linear-gradient(135deg,#232a35 0,#1b2029 100%);border-color:rgba(239,68,68,.4)}.custom-popup-error::before{background:linear-gradient(90deg,#ef4444 0,#dc2626 50%,#ef4444 100%)}.custom-popup-error .custom-popup-message{color:#fca5a5}.custom-popup-message{color:#c7cfda}.custom-popup-button{background:linear-gradient(135deg,#7b88f7 0,#6a5fa8 100%);color:#f1f5f9;box-shadow:0 4px 14px rgba(123,136,247,.35)}.custom-popup-button:hover{background:linear-gradient(135deg,#6a5fa8 0,#5c4d9e 100%);box-shadow:0 6px 20px rgba(123,136,247,.45)}
+/* ========================================
+   온보딩 화면 (다크 모드)
+   ======================================== */
+
+.onboarding-container {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #111827 100%);
+    --color-text-primary: #e5e7eb;
+    --color-text-secondary: #cbd5f5;
+    --color-text-tertiary: #a7b1c2;
+    --color-border: #2b3340;
+    --color-bg-light: #1f2530;
+    --color-error: #f87171;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.55);
+    --shadow-danger: 0 2px 8px rgba(248, 113, 113, 0.35);
+}
+
+.onboarding-box {
+    background: rgba(20, 24, 32, 0.98);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+}
+
+#welcomeMessage {
+    color: #e2e8f0;
+    background-color: rgba(31, 37, 48, 0.85);
+}
+
+.onboarding-description {
+    background-color: #1f2530;
+    border-left-color: #7b88f7;
+}
+
+.language-subtitle {
+    color: #9aa6b2;
+}
+
+.onboarding-input-field,
+#onboardingLanguageSelector,
+#onboardingNameInput,
+.goal-input {
+    background-color: #141820;
+    border-color: #2b3340;
+    color: #e5e7eb;
+}
+
+.onboarding-input-field:focus,
+#onboardingLanguageSelector:focus,
+#onboardingNameInput:focus,
+.goal-input:focus {
+    background-color: #141820;
+    border-color: #7b88f7;
+    box-shadow: 0 0 0 3px rgba(123, 136, 247, 0.25);
+}
+
+.goal-input-wrapper .currency-symbol {
+    color: #c7d0de;
+}
+
+/* 과목 설정(온보딩) 다크 모드 */
+#onboardingSubjectsList .subject-setting-item {
+    background: linear-gradient(135deg, #1f2530 0%, #1a2029 100%);
+    border-color: #2b3340;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+#onboardingSubjectsList .subject-setting-item:hover {
+    border-color: #7b88f7;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+#onboardingSubjectsList .subject-setting-item .subject-number {
+    background: linear-gradient(135deg, #5c6cf2 0%, #6a5fa8 100%);
+    color: #f1f5f9;
+    box-shadow: 0 4px 12px rgba(30, 40, 80, 0.45);
+}
+
+#onboardingSubjectsList .subject-setting-item .subject-name-input,
+#onboardingSubjectsList .subject-setting-item .subject-amount-input {
+    background: #141820;
+    border-color: #2b3340;
+    color: #c7cfda;
+}
+
+#onboardingSubjectsList .subject-setting-item .subject-name-input:hover,
+#onboardingSubjectsList .subject-setting-item .subject-amount-input:hover {
+    border-color: #3a4557;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+#onboardingSubjectsList .subject-setting-item .subject-name-input:focus,
+#onboardingSubjectsList .subject-setting-item .subject-amount-input:focus {
+    border-color: #7b88f7;
+    box-shadow: 0 0 0 4px rgba(123, 136, 247, 0.2);
+}
+
+#onboardingSubjectsList .subject-setting-item .subject-amount-wrapper .currency-symbol {
+    color: #9fb0ff;
+}
+
+/* ==========================================================================
+   커스텀 팝업 (온보딩 전용) - 다크 모드
+   ========================================================================== */
+
+.custom-popup-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.custom-popup {
+    background: #1b2029;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(123, 136, 247, 0.15);
+}
+
+.custom-popup::before {
+    background: linear-gradient(90deg, #7b88f7 0%, #6a5fa8 50%, #7b88f7 100%);
+}
+
+.custom-popup-warning {
+    background: linear-gradient(135deg, #232a35 0%, #1b2029 100%);
+    border-color: rgba(251, 191, 36, 0.35);
+}
+
+.custom-popup-warning::before {
+    background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 50%, #fbbf24 100%);
+}
+
+.custom-popup-warning .custom-popup-message {
+    color: #fcd34d;
+}
+
+.custom-popup-error {
+    background: linear-gradient(135deg, #232a35 0%, #1b2029 100%);
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+.custom-popup-error::before {
+    background: linear-gradient(90deg, #ef4444 0%, #dc2626 50%, #ef4444 100%);
+}
+
+.custom-popup-error .custom-popup-message {
+    color: #fca5a5;
+}
+
+.custom-popup-message {
+    color: #c7cfda;
+}
+
+.custom-popup-button {
+    background: linear-gradient(135deg, #7b88f7 0%, #6a5fa8 100%);
+    color: #f1f5f9;
+    box-shadow: 0 4px 14px rgba(123, 136, 247, 0.35);
+}
+
+.custom-popup-button:hover {
+    background: linear-gradient(135deg, #6a5fa8 0%, #5c4d9e 100%);
+    box-shadow: 0 6px 20px rgba(123, 136, 247, 0.45);
+}
