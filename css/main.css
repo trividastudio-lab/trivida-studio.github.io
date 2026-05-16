@@ -159,14 +159,16 @@ body {
 /* 웹 브라우저: 문서(body) 스크롤로 하단 주소창·툴바에 가려지지 않게 함 */
 html.env-web {
   overflow-x: hidden;
+  overscroll-behavior-y: auto;
 }
 html.env-web body {
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
 }
 html.env-web #appContainer.app-container {
-  min-height: var(--app-visual-vh, 100svh);
+  min-height: 100dvh;
   height: auto;
   max-height: none;
   overflow: visible;
@@ -176,7 +178,10 @@ html.env-web #appContainer .scroll-content {
   overflow-x: hidden;
   overflow-y: visible;
   overscroll-behavior-y: auto;
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--web-browser-bottom-gap, 0px));
+  touch-action: pan-y pinch-zoom;
+  padding-bottom: calc(
+    24px + env(safe-area-inset-bottom, 0px) + var(--web-browser-bottom-gap, 0px)
+  );
 }
 .header {
   display: flex;
@@ -670,10 +675,10 @@ html.platform-android .header {
 }
 html.env-web #appContainer.timer-active .scroll-content {
   flex: 1 0 auto;
-  min-height: var(--app-visual-vh, 100dvh);
+  min-height: 100dvh;
 }
 html.env-web #appContainer.timer-active .subjects-section {
-  min-height: var(--app-visual-vh, 100dvh);
+  min-height: 100dvh;
 }
 #appContainer.timer-active .additional-section,
 #appContainer.timer-active .lock-toggle-btn,

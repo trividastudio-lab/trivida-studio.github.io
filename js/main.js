@@ -28,12 +28,9 @@ function updateWebViewportCssVars() {
     const vv = window.visualViewport;
     const innerH = window.innerHeight;
     if (vv && typeof vv.height === 'number' && vv.height > 0) {
-        const vh = Math.round(vv.height);
-        document.documentElement.style.setProperty('--app-visual-vh', `${vh}px`);
         const bottomGap = Math.max(0, Math.round(innerH - vv.offsetTop - vv.height));
         document.documentElement.style.setProperty('--web-browser-bottom-gap', `${bottomGap}px`);
     } else if (Number.isFinite(innerH) && innerH > 0) {
-        document.documentElement.style.setProperty('--app-visual-vh', `${Math.round(innerH)}px`);
         document.documentElement.style.setProperty('--web-browser-bottom-gap', '0px');
     }
 }
