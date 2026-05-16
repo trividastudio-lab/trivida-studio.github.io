@@ -17,6 +17,46 @@ import {
 let appInitialized = false;
 let keyboardListenersInitialized = false;
 
+/** 웹 브라우저에서 모바일 주소창·하단 툴바로 인해 100dvh와 실제 보이는 높이가 어긋날 때 보정 */
+let webVisualViewportRaf = null;
+
+function updateWebVisualViewportHeightCssVar() {
+    if (window.Capacitor?.isNativePlatform?.()) {
+        return;
+    }
+    const h = window.visualViewport?.height ?? window.innerHeight;
+    if (Number.isFinite(h) && h > 0) {
+        document.documentElement.style.setProperty('--app-visual-vh', `${Math.round(h)}px`);
+    }
+}
+
+function scheduleWebVisualViewportHeightUpdate() {
+    if (window.Capacitor?.isNativePlatform?.()) {
+        return;
+    }
+    if (webVisualViewportRaf != null) {
+        cancelAnimationFrame(webVisualViewportRaf);
+    }
+    webVisualViewportRaf = requestAnimationFrame(() => {
+        webVisualViewportRaf = null;
+        updateWebVisualViewportHeightCssVar();
+    });
+}
+
+function setupWebVisualViewportHeight() {
+    if (window.Capacitor?.isNativePlatform?.()) {
+        return;
+    }
+    updateWebVisualViewportHeightCssVar();
+    window.addEventListener('resize', scheduleWebVisualViewportHeightUpdate);
+    window.addEventListener('orientationchange', scheduleWebVisualViewportHeightUpdate);
+    const vv = window.visualViewport;
+    if (vv) {
+        vv.addEventListener('resize', scheduleWebVisualViewportHeightUpdate);
+        vv.addEventListener('scroll', scheduleWebVisualViewportHeightUpdate);
+    }
+}
+
 // 타이머 참조 저장 (정리용)
 let keyboardCloseTimeout = null;
 
@@ -367,6 +407,8 @@ async function initializeApp() {
     }
 
     try {
+        setupWebVisualViewportHeight();
+
         if (window.Capacitor?.isNativePlatform?.() && window.Capacitor.getPlatform() === 'android') {
             document.documentElement.classList.add('platform-android');
         }

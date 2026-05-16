@@ -33,17 +33,32 @@ function getInAppReviewPlugin() {
     return null;
 }
 
-/** 인앱 리뷰 불가·실패 시 Play 스토어 앱 상세로 연결 (Android: market:// → HTTPS). */
+/** Play 스토어 앱 상세 열기 (Android WebView에서 window.open이 막히는 경우가 많아 @capacitor/browser 사용). */
 async function openPlayStoreAppListing() {
-    const Capacitor = window.Capacitor;
-    const App = Capacitor?.Plugins?.App;
-    if (Capacitor?.getPlatform?.() === 'android' && App?.openUrl) {
-        try {
-            await App.openUrl({ url: `market://details?id=${APP_PACKAGE_ID}` });
+    const url = PLAY_STORE_URL;
+    try {
+        const Capacitor = window.Capacitor;
+        const isNative = typeof Capacitor?.isNativePlatform === 'function' && Capacitor.isNativePlatform() === true;
+        const Browser = Capacitor?.Plugins?.Browser;
+        if (isNative && Browser && typeof Browser.open === 'function') {
+            await Browser.open({ url });
             return;
-        } catch (_) {}
+        }
+    } catch (e) {
+        utils.logDevWarning('Play Store Browser.open 실패', e);
     }
-    window.open(PLAY_STORE_URL, '_blank');
+    try {
+        const w = window.open(url, '_blank', 'noopener,noreferrer');
+        if (!w || w.closed) {
+            window.location.href = url;
+        }
+    } catch (_) {
+        try {
+            window.location.href = url;
+        } catch (e2) {
+            utils.logDevWarning('Play Store 열기 실패', e2);
+        }
+    }
 }
 /** 비밀번호 연속 오류 시 잠금 (localStorage) */
 const LS_LOCK_PIN_LOCKOUT_UNTIL = 'lock_pin_lockout_until';
@@ -1255,7 +1270,7 @@ async function handleRateApp() {
         const isNative = Capacitor?.isNativePlatform?.() === true;
 
         if (!isNative) {
-            window.open(PLAY_STORE_URL, '_blank');
+            await openPlayStoreAppListing();
             return;
         }
 
