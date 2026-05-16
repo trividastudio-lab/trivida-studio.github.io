@@ -33,6 +33,19 @@ export function restoreMainScrollAfterTimerExit() {
     if (mainScrollTopBeforeTimer == null) return;
     const y = mainScrollTopBeforeTimer;
     mainScrollTopBeforeTimer = null;
+    if (utils.usesMainAppDocumentScroll()) {
+        const root = document.scrollingElement ?? document.documentElement;
+        const apply = () => {
+            const max = Math.max(0, root.scrollHeight - window.innerHeight);
+            window.scrollTo(0, Math.min(y, max));
+        };
+        apply();
+        requestAnimationFrame(() => {
+            apply();
+            requestAnimationFrame(apply);
+        });
+        return;
+    }
     const sc = getMainScrollContentEl();
     if (!sc) return;
     const apply = () => {
@@ -777,7 +790,9 @@ async function handleVisibilityChange() {
  */
 function dimScreen(subjectId) {
     const sc = getMainScrollContentEl();
-    if (sc) {
+    if (utils.usesMainAppDocumentScroll()) {
+        mainScrollTopBeforeTimer = window.scrollY ?? document.documentElement.scrollTop ?? 0;
+    } else if (sc) {
         mainScrollTopBeforeTimer = sc.scrollTop;
     }
     const appContainer = document.getElementById('appContainer');

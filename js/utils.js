@@ -14,6 +14,12 @@ export function logDevWarning(message, error) {
     console.warn(message, ...(error !== undefined ? [error] : []));
 }
 
+/** 웹(main.js가 html에 부여한 env-web): 메인 스크롤이 .scroll-content가 아니라 문서(body)에 있음 */
+export function usesMainAppDocumentScroll() {
+    return typeof document !== 'undefined'
+        && document.documentElement.classList.contains('env-web');
+}
+
 /** Date 객체가 유효한지 확인하는 내부 헬퍼 */
 function isDate(d) {
     return d instanceof Date && !isNaN(d.getTime());

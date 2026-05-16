@@ -109,18 +109,35 @@ function getMainAppScrollContent() {
 function lockScrollForSettingsModal() {
     const sc = getMainAppScrollContent();
     if (!sc) return;
+    if (utils.usesMainAppDocumentScroll()) {
+        const y = window.scrollY ?? document.documentElement.scrollTop ?? 0;
+        document.body.dataset.settingsScrollTop = String(y);
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        return;
+    }
     document.body.dataset.settingsScrollTop = String(sc.scrollTop);
     sc.style.overflow = 'hidden';
 }
 
 function unlockScrollAfterSettingsModal() {
-    const sc = getMainAppScrollContent();
-    if (sc) {
-        sc.style.removeProperty('overflow');
+    if (utils.usesMainAppDocumentScroll()) {
+        document.documentElement.style.removeProperty('overflow');
+        document.body.style.removeProperty('overflow');
         const raw = document.body.dataset.settingsScrollTop;
         if (raw !== undefined) {
-            sc.scrollTop = parseInt(raw, 10) || 0;
+            window.scrollTo(0, parseInt(raw, 10) || 0);
             delete document.body.dataset.settingsScrollTop;
+        }
+    } else {
+        const sc = getMainAppScrollContent();
+        if (sc) {
+            sc.style.removeProperty('overflow');
+            const raw = document.body.dataset.settingsScrollTop;
+            if (raw !== undefined) {
+                sc.scrollTop = parseInt(raw, 10) || 0;
+                delete document.body.dataset.settingsScrollTop;
+            }
         }
     }
     /* 구버전·예외 경로에서 남은 body 고정 제거 */
@@ -142,13 +159,23 @@ function releaseStaleMainScrollLock() {
     if (!modal) return;
     const open = modal.style.display === 'flex' || window.getComputedStyle(modal).display === 'flex';
     if (open) return;
-    const sc = getMainAppScrollContent();
-    if (sc && sc.style.overflow === 'hidden') {
-        sc.style.removeProperty('overflow');
-    }
-    if (document.body.dataset.settingsScrollTop !== undefined && sc) {
-        sc.scrollTop = parseInt(document.body.dataset.settingsScrollTop, 10) || 0;
-        delete document.body.dataset.settingsScrollTop;
+    if (utils.usesMainAppDocumentScroll()) {
+        document.documentElement.style.removeProperty('overflow');
+        document.body.style.removeProperty('overflow');
+        const rawDoc = document.body.dataset.settingsScrollTop;
+        if (rawDoc !== undefined) {
+            window.scrollTo(0, parseInt(rawDoc, 10) || 0);
+            delete document.body.dataset.settingsScrollTop;
+        }
+    } else {
+        const sc = getMainAppScrollContent();
+        if (sc && sc.style.overflow === 'hidden') {
+            sc.style.removeProperty('overflow');
+        }
+        if (document.body.dataset.settingsScrollTop !== undefined && sc) {
+            sc.scrollTop = parseInt(document.body.dataset.settingsScrollTop, 10) || 0;
+            delete document.body.dataset.settingsScrollTop;
+        }
     }
     if (document.body.style.position === 'fixed' || document.body.dataset.scrollY !== undefined) {
         const scrollY = document.body.dataset.scrollY ? parseInt(document.body.dataset.scrollY, 10) : 0;

@@ -158,6 +158,28 @@ body {
   overflow: hidden;
   box-sizing: border-box;
 }
+/* 웹 브라우저: 문서(body) 스크롤로 하단 주소창·툴바에 가려지지 않게 함 */
+html.env-web {
+  overflow-x: hidden;
+}
+html.env-web body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+html.env-web #appContainer.app-container {
+  min-height: var(--app-visual-vh, 100svh);
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+html.env-web #appContainer .scroll-content {
+  flex: 1 0 auto;
+  overflow-x: hidden;
+  overflow-y: visible;
+  overscroll-behavior-y: auto;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--web-browser-bottom-gap, 0px));
+}
 .header {
   display: flex;
   justify-content: center;
@@ -580,6 +602,13 @@ html.platform-android .header {
 #appContainer.timer-active .scroll-content {
   flex: 1;
   min-height: 0;
+}
+html.env-web #appContainer.timer-active .scroll-content {
+  flex: 1 0 auto;
+  min-height: var(--app-visual-vh, 100dvh);
+}
+html.env-web #appContainer.timer-active .subjects-section {
+  min-height: var(--app-visual-vh, 100dvh);
 }
 #appContainer.timer-active .additional-section,
 #appContainer.timer-active .lock-toggle-btn,

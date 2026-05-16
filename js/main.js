@@ -17,16 +17,24 @@ import {
 let appInitialized = false;
 let keyboardListenersInitialized = false;
 
-/** 웹 브라우저에서 모바일 주소창·하단 툴바로 인해 100dvh와 실제 보이는 높이가 어긋날 때 보정 */
+/** 웹: 모바일 주소창·하단 UI와 dvh 불일치 보정 (네이티브에서는 미사용) */
 let webVisualViewportRaf = null;
+let webViewportBrowserListenersAttached = false;
 
-function updateWebVisualViewportHeightCssVar() {
+function updateWebViewportCssVars() {
     if (window.Capacitor?.isNativePlatform?.()) {
         return;
     }
-    const h = window.visualViewport?.height ?? window.innerHeight;
-    if (Number.isFinite(h) && h > 0) {
-        document.documentElement.style.setProperty('--app-visual-vh', `${Math.round(h)}px`);
+    const vv = window.visualViewport;
+    const innerH = window.innerHeight;
+    if (vv && typeof vv.height === 'number' && vv.height > 0) {
+        const vh = Math.round(vv.height);
+        document.documentElement.style.setProperty('--app-visual-vh', `${vh}px`);
+        const bottomGap = Math.max(0, Math.round(innerH - vv.offsetTop - vv.height));
+        document.documentElement.style.setProperty('--web-browser-bottom-gap', `${bottomGap}px`);
+    } else if (Number.isFinite(innerH) && innerH > 0) {
+        document.documentElement.style.setProperty('--app-visual-vh', `${Math.round(innerH)}px`);
+        document.documentElement.style.setProperty('--web-browser-bottom-gap', '0px');
     }
 }
 
@@ -39,15 +47,20 @@ function scheduleWebVisualViewportHeightUpdate() {
     }
     webVisualViewportRaf = requestAnimationFrame(() => {
         webVisualViewportRaf = null;
-        updateWebVisualViewportHeightCssVar();
+        updateWebViewportCssVars();
     });
 }
 
-function setupWebVisualViewportHeight() {
+function setupWebViewportForBrowser() {
     if (window.Capacitor?.isNativePlatform?.()) {
         return;
     }
-    updateWebVisualViewportHeightCssVar();
+    document.documentElement.classList.add('env-web');
+    updateWebViewportCssVars();
+    if (webViewportBrowserListenersAttached) {
+        return;
+    }
+    webViewportBrowserListenersAttached = true;
     window.addEventListener('resize', scheduleWebVisualViewportHeightUpdate);
     window.addEventListener('orientationchange', scheduleWebVisualViewportHeightUpdate);
     const vv = window.visualViewport;
@@ -56,6 +69,8 @@ function setupWebVisualViewportHeight() {
         vv.addEventListener('scroll', scheduleWebVisualViewportHeightUpdate);
     }
 }
+
+setupWebViewportForBrowser();
 
 // 타이머 참조 저장 (정리용)
 let keyboardCloseTimeout = null;
@@ -407,8 +422,6 @@ async function initializeApp() {
     }
 
     try {
-        setupWebVisualViewportHeight();
-
         if (window.Capacitor?.isNativePlatform?.() && window.Capacitor.getPlatform() === 'android') {
             document.documentElement.classList.add('platform-android');
         }
