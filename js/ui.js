@@ -85,16 +85,16 @@ function addCurrencySymbolToInput(inputElement) {
         } else {
             container = inputElement.parentElement;
         }
-    } else if (inputElement.id === 'additionalAmount' && container?.classList.contains('add-additional')) {
-        // 추가 용돈 금액: 그리드 셀 내에 symbol+input을 함께 배치하기 위해 wrapper 사용
-        if (!container.querySelector('.additional-amount-wrapper')) {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'additional-amount-wrapper';
-            container.insertBefore(wrapper, inputElement);
-            wrapper.appendChild(inputElement);
+    } else if (inputElement.id === 'additionalAmount') {
+        const wrapper = inputElement.closest('.additional-amount-wrapper');
+        if (wrapper) {
             container = wrapper;
-        } else {
-            container = inputElement.parentElement;
+        } else if (parent?.classList.contains('add-additional')) {
+            const newWrapper = document.createElement('div');
+            newWrapper.className = 'additional-amount-wrapper';
+            parent.insertBefore(newWrapper, inputElement);
+            newWrapper.appendChild(inputElement);
+            container = newWrapper;
         }
     }
     // goal-input-wrapper 등 기타: container = parent 그대로 사용
@@ -514,14 +514,15 @@ export function enableNameEdit() {
     // Enter 키 또는 blur 시 저장
     const saveName = async () => {
         const newName = input.value.trim();
-        if (newName && newName !== currentName) {
+        const trimmedCurrent = (currentName || '').trim();
+        if (newName !== trimmedCurrent) {
             state.user.name = newName;
             const { saveData } = await import('./api.js');
             saveData();
         }
         
         // input을 다시 텍스트로 변환
-        const userNameText = i18n.t('dashboard.header.user', { name: state.user.name });
+        const userNameText = getHeaderUserText();
         elements.userNameDisplay.textContent = userNameText;
         elements.userNameDisplay.style.display = '';
         input.remove();
@@ -540,7 +541,7 @@ export function enableNameEdit() {
         } else if (e.key === 'Escape') {
             e.preventDefault();
             // 취소: 원래 이름으로 복원
-            const userNameText = i18n.t('dashboard.header.user', { name: state.user.name });
+            const userNameText = getHeaderUserText();
             elements.userNameDisplay.textContent = userNameText;
             elements.userNameDisplay.style.display = '';
             input.remove();
@@ -567,8 +568,19 @@ export function enableNameEdit() {
 /**
  * 헤더 렌더링
  */
+function getHeaderUserText() {
+    const name = state.user.name?.trim();
+    if (name) {
+        return i18n.t('dashboard.header.user', { name });
+    }
+    return i18n.t('dashboard.header.userAnonymous');
+}
+
 function renderHeader() {
-    const userNameText = i18n.t('dashboard.header.user', { name: state.user.name });
+    const userNameText = getHeaderUserText();
+    if (elements.userNameDisplay) {
+        elements.userNameDisplay.textContent = userNameText;
+    }
     adjustNameFontSize(elements.userNameDisplay, userNameText);
     
     const subtitleText = i18n.t('dashboard.header.subtitle');
@@ -786,6 +798,44 @@ export function renderSubjectsGrid(date) {
  * 추가 용돈 섹션 렌더링
  * @param {Date} date - 기준 날짜
  */
+/** 추가 용돈 금액: 모바일 숫자 자판에는 −가 없는 경우가 많아 +/− 버튼으로 부호 전환 */
+let additionalAmountSignButtonWired = false;
+
+export function syncAdditionalAmountSignButton(_input, btn) {
+    if (!btn) return;
+    btn.textContent = btn.classList.contains('is-negative') ? '−' : '+';
+}
+
+export function resetAdditionalAmountSignButton() {
+    const btn = document.getElementById('additionalAmountSignBtn');
+    const input = document.getElementById('additionalAmount');
+    if (!btn) return;
+    btn.classList.remove('is-negative');
+    btn.textContent = '+';
+    if (input && input.value.startsWith('-')) {
+        input.value = utils.normalizeUnsignedNumericInput(input.value, true);
+    }
+}
+
+function setupAdditionalAmountSignButton(input) {
+    const btn = document.getElementById('additionalAmountSignBtn');
+    if (!btn || !input) return;
+    btn.setAttribute('aria-label', i18n.t('dashboard.bonus.toggleSign'));
+    syncAdditionalAmountSignButton(input, btn);
+    if (additionalAmountSignButtonWired) return;
+    additionalAmountSignButtonWired = true;
+
+    btn.addEventListener('click', () => {
+        btn.classList.toggle('is-negative');
+        const el = document.getElementById('additionalAmount');
+        if (!el) return;
+        const abs = el.value.trim().replace(/^-+/g, '');
+        el.value = abs ? utils.normalizeUnsignedNumericInput(abs, true) : '';
+        syncAdditionalAmountSignButton(el, btn);
+        el.focus();
+    });
+}
+
 function renderBonusSection(date) {
     const dateKey = utils.formatDate(date);
     const monthKey = utils.formatMonth(date);
@@ -794,19 +844,17 @@ function renderBonusSection(date) {
     elements.additionalReason.placeholder = i18n.t('dashboard.bonus.reason');
     elements.additionalAmount.placeholder = i18n.t('dashboard.bonus.amount');
     elements.addAdditionalBtn.textContent = i18n.t('action.add');
-    
-    // 통화별 최대 금액 설정
-    const maxAmount = state.settings?.currency?.maxAmount || 10000000;
-    elements.additionalAmount.max = maxAmount;
-    
-    // 소숫점 통화를 고려한 min 및 step 설정
-    const currencyDecimal = state.settings?.currency?.decimal || 0;
-    elements.additionalAmount.min = currencyDecimal > 0 ? Math.pow(0.1, currencyDecimal) : 0;
-    elements.additionalAmount.step = currencyDecimal > 0 ? Math.pow(0.1, currencyDecimal) : 1;
-    
-    // 통화 기호 추가 (국가별 position 적용) — 모바일에서는 rAF로 지연하여 레이아웃 계산 후 적용
+
     const amountEl = elements.additionalAmount || document.getElementById('additionalAmount');
     if (amountEl) {
+        amountEl.type = 'text';
+        amountEl.inputMode = 'decimal';
+        amountEl.autocomplete = 'off';
+        amountEl.enterKeyHint = 'done';
+        amountEl.removeAttribute('min');
+        amountEl.removeAttribute('max');
+        amountEl.removeAttribute('step');
+        setupAdditionalAmountSignButton(amountEl);
         const applySymbol = () => addCurrencySymbolToInput(amountEl);
         if (typeof requestAnimationFrame !== 'undefined') {
             requestAnimationFrame(() => requestAnimationFrame(applySymbol));
@@ -876,7 +924,8 @@ export function renderMainView(date = state.currentDate) {
     // 모든 렌더링 완료 후 이름 폰트 크기 재조정 (과목 완료 클릭 시 폰트 크기가 초기화되는 버그 수정)
     requestAnimationFrame(() => {
         if (elements.userNameDisplay) {
-            const userNameText = i18n.t('dashboard.header.user', { name: state.user.name });
+            const userNameText = getHeaderUserText();
+            elements.userNameDisplay.textContent = userNameText;
             adjustNameFontSize(elements.userNameDisplay, userNameText);
         }
     });

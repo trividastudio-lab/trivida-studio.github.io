@@ -53,6 +53,7 @@ const elements = {
     welcomeTitle: document.getElementById('welcomeTitle'),
     welcomeMessage: document.getElementById('welcomeMessage'),
     welcomeNextBtn: document.getElementById('welcomeNextBtn'),
+    welcomeQuickStartBtn: document.getElementById('welcomeQuickStartBtn'),
     
     // 3단계: 이름 입력
     nameTitle: document.getElementById('nameTitle'),
@@ -819,6 +820,48 @@ export async function initOnboarding(onComplete) {
     
     setupOnboardingBackButton();
     
+    function applyDefaultGoalSettings() {
+        const currentDate = new Date();
+        const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+        const targetDays = state.settings.goalDays || Math.min(20, daysInMonth);
+        const bonusAmount = state.settings.goalBonus ?? 0;
+        state.settings.restConstant = daysInMonth - targetDays;
+        state.settings.goalBonus = bonusAmount;
+        state.settings.goalDays = targetDays;
+    }
+
+    async function completeOnboardingAndLaunch() {
+        try {
+            state.onboardingCompleted = true;
+            await saveData();
+            elements.onboardingView.style.opacity = '0';
+            setTimeout(() => {
+                elements.onboardingView.style.display = 'none';
+                elements.appContainer.style.display = 'flex';
+                runWhenMainShellLaidOut(() => {
+                    if (typeof onboardingCompleteCallback === 'function') {
+                        onboardingCompleteCallback();
+                    }
+                });
+            }, 500);
+        } catch (error) {
+            await showCustomPopup(i18n.t('onboarding.complete.saveFailed'), '❌');
+        }
+    }
+
+    async function startWithDefaultSettings() {
+        state.user.name = '';
+        subjectsModified = false;
+        languageChanged = false;
+        const result = applyCountrySettings(state.user.language, false);
+        if (!result.success) {
+            await showCustomPopup(result.error || i18n.t('onboarding.country.detectFailed'), '⚠️');
+            return;
+        }
+        applyDefaultGoalSettings();
+        await completeOnboardingAndLaunch();
+    }
+    
     // 1단계: 언어 선택
     function setupStep1() {
         // 기존 이벤트 리스너 제거를 위해 새 함수로 교체
@@ -1010,11 +1053,26 @@ export async function initOnboarding(onComplete) {
             elements.welcomeNextBtn.parentNode.replaceChild(newNextBtn, elements.welcomeNextBtn);
             elements.welcomeNextBtn = newNextBtn;
         }
+        if (elements.welcomeQuickStartBtn && elements.welcomeQuickStartBtn.parentNode) {
+            const newQuickBtn = elements.welcomeQuickStartBtn.cloneNode(true);
+            elements.welcomeQuickStartBtn.parentNode.replaceChild(newQuickBtn, elements.welcomeQuickStartBtn);
+            elements.welcomeQuickStartBtn = newQuickBtn;
+        }
+        
+        elements.welcomeNextBtn.textContent = i18n.t('action.next');
+        if (elements.welcomeQuickStartBtn) {
+            elements.welcomeQuickStartBtn.textContent = i18n.t('onboarding.welcome.quickStart');
+        }
         
         elements.welcomeNextBtn.addEventListener('click', () => {
             showStep(3);
             setupStep3();
         });
+        if (elements.welcomeQuickStartBtn) {
+            elements.welcomeQuickStartBtn.addEventListener('click', () => {
+                void startWithDefaultSettings();
+            });
+        }
     }
     
     // 3단계: 이름 입력
@@ -1700,26 +1758,8 @@ export async function initOnboarding(onComplete) {
             elements.completeStartBtn = newStartBtn;
         }
         
-        elements.completeStartBtn.addEventListener('click', async () => {
-            try {
-                // 온보딩 완료 상태 저장
-                state.onboardingCompleted = true;
-                
-                // 데이터 저장
-                await saveData();
-
-                
-                // 온보딩 화면 숨기기
-                elements.onboardingView.style.opacity = '0';
-                setTimeout(() => {
-                    elements.onboardingView.style.display = 'none';
-                    elements.appContainer.style.display = 'flex';
-                    runWhenMainShellLaidOut(() => onComplete());
-                }, 500);
-                
-            } catch (error) {
-                await showCustomPopup(i18n.t('onboarding.complete.saveFailed'), '❌');
-            }
+        elements.completeStartBtn.addEventListener('click', () => {
+            void completeOnboardingAndLaunch();
         });
     }
     

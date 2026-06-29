@@ -1,7 +1,7 @@
 import { state, MIN_GOAL_DAYS, DEFAULT_MAX_SUBJECTS, EXPANDED_MAX_SUBJECTS, inferSubjectsFromMonthRecords } from './state.js';
 import { saveData, exportDataToFile, importDataFromFile, pickDataBackupFileAndroid } from './api.js';
 import * as utils from './utils.js';
-import { renderMainView, renderCalendarView, renderSettings, toggleSubject, enableNameEdit, scheduleSettingsInputFontSize, applyFontSizeScale, showToastMessage } from './ui.js';
+import { renderMainView, renderCalendarView, renderSettings, toggleSubject, enableNameEdit, scheduleSettingsInputFontSize, applyFontSizeScale, showToastMessage, resetAdditionalAmountSignButton, syncAdditionalAmountSignButton } from './ui.js';
 import { i18n, resources } from './languages.js';
 import { DONATION_PRODUCTS } from './iap-products.js';
 import { DEV_MODE } from './build-flags.js';
@@ -280,7 +280,15 @@ async function handleAddAdditional() {
     const reasonInput = document.getElementById('additionalReason');
     const amountInput = document.getElementById('additionalAmount');
     let reason = reasonInput.value.trim();
-    let amount = Number(amountInput.value);
+    const signBtn = document.getElementById('additionalAmountSignBtn');
+    let absAmount = Math.abs(Number(amountInput.value));
+    if (Number.isNaN(absAmount)) {
+        absAmount = NaN;
+    }
+    let amount = absAmount;
+    if (!Number.isNaN(amount) && signBtn?.classList.contains('is-negative')) {
+        amount = -amount;
+    }
     
     // 현재 보고 있는 날짜가 잠긴 경우 추가 용돈 변경 차단
     const viewedDateKey = utils.formatDate(state.currentDate);
@@ -299,12 +307,8 @@ async function handleAddAdditional() {
         reasonInput.value = reason;
     }
     
-    // 소숫점 통화를 고려한 최소값 검증
-    const minAmount = state.settings?.currency?.decimal > 0 
-        ? Math.pow(0.1, state.settings.currency.decimal) 
-        : 0;
-    
-    if (!amount || amount <= minAmount) {
+    // 소숫점·마이너스 허용; 0만 불가
+    if (typeof amount !== 'number' || isNaN(amount) || amount === 0) {
         await showAlertModal(i18n.t('modal.title.alert'), i18n.t('dashboard.bonus.errorAmount'));
         return;
     }
@@ -312,13 +316,17 @@ async function handleAddAdditional() {
     const maxAmount = state.settings?.currency?.maxAmount || 10000000;
     if (amount > maxAmount) {
         amount = maxAmount;
-        amountInput.value = maxAmount;
+        amountInput.value = String(maxAmount);
+    } else if (amount < -maxAmount) {
+        amount = -maxAmount;
+        amountInput.value = String(maxAmount);
     }
     
     const { addBonus } = await import('./ui.js');
     if (await addBonus(reason, amount, state.currentDate)) {
         reasonInput.value = '';
         amountInput.value = '';
+        resetAdditionalAmountSignButton();
         saveData();
         renderMainView();
     }
@@ -2754,13 +2762,17 @@ export function setupEventListeners() {
             }
         }
         else if (target.id === 'additionalAmount') {
-            // 숫자만 허용 (소수점 포함)
+            const signBtn = document.getElementById('additionalAmountSignBtn');
             const valueStr = target.value;
-            const cleanedValue = valueStr.replace(/[^0-9.]/g, '');
+            if (/-/.test(valueStr) && signBtn) {
+                signBtn.classList.add('is-negative');
+                syncAdditionalAmountSignButton(target, signBtn);
+            }
+            const cleanedValue = utils.cleanUnsignedNumericInput(valueStr);
             if (valueStr !== cleanedValue) {
                 target.value = cleanedValue;
             }
-            target.value = utils.normalizeNumericInput(target.value, true);
+            target.value = utils.normalizeUnsignedNumericInput(target.value, true);
             
             // 소수점 자릿수 제한
             const currencyDecimal = state.settings?.currency?.decimal || 0;
@@ -2768,19 +2780,17 @@ export function setupEventListeners() {
             if (finalValueStr && finalValueStr.includes('.')) {
                 const decimalPart = finalValueStr.split('.')[1];
                 if (decimalPart && decimalPart.length > currencyDecimal) {
-                    // 소수점 자릿수 초과 시 제한
                     const rounded = parseFloat(finalValueStr).toFixed(currencyDecimal);
                     target.value = rounded;
                 }
             }
-            target.value = utils.normalizeNumericInput(target.value, true);
+            target.value = utils.normalizeUnsignedNumericInput(target.value, true);
             
             const maxAmount = state.settings?.currency?.maxAmount || 10000000;
             const value = Number(target.value);
-            if (value > maxAmount) {
-                target.value = maxAmount;
+            if (!Number.isNaN(value) && value > maxAmount) {
+                target.value = String(maxAmount);
             }
-            target.value = utils.normalizeNumericInput(target.value, true);
         }
     };
     appContainer.addEventListener('input', appContainerInputHandler, true);
@@ -2788,33 +2798,34 @@ export function setupEventListeners() {
     appContainerBlurHandler = (event) => {
         const target = event.target;
         if (target.id === 'additionalAmount') {
-            // 숫자만 허용 (소수점 포함)
+            const signBtn = document.getElementById('additionalAmountSignBtn');
             const valueStr = target.value;
-            const cleanedValue = valueStr.replace(/[^0-9.]/g, '');
+            if (/-/.test(valueStr) && signBtn) {
+                signBtn.classList.add('is-negative');
+                syncAdditionalAmountSignButton(target, signBtn);
+            }
+            const cleanedValue = utils.cleanUnsignedNumericInput(valueStr);
             if (valueStr !== cleanedValue) {
                 target.value = cleanedValue;
             }
-            target.value = utils.normalizeNumericInput(target.value, true);
+            target.value = utils.normalizeUnsignedNumericInput(target.value, true);
             
-            // 소수점 자릿수 제한 및 반올림
             const currencyDecimal = state.settings?.currency?.decimal || 0;
             const finalValueStr = target.value;
             if (finalValueStr && finalValueStr.includes('.')) {
                 const decimalPart = finalValueStr.split('.')[1];
                 if (decimalPart && decimalPart.length > currencyDecimal) {
-                    // 소수점 자릿수 초과 시 반올림
                     const rounded = parseFloat(finalValueStr).toFixed(currencyDecimal);
                     target.value = rounded;
                 }
             }
-            target.value = utils.normalizeNumericInput(target.value, true);
+            target.value = utils.normalizeUnsignedNumericInput(target.value, true);
             
             const maxAmount = state.settings?.currency?.maxAmount || 10000000;
             const value = Number(target.value);
-            if (value > maxAmount) {
-                target.value = maxAmount;
+            if (!Number.isNaN(value) && value > maxAmount) {
+                target.value = String(maxAmount);
             }
-            target.value = utils.normalizeNumericInput(target.value, true);
         }
     };
     appContainer.addEventListener('blur', appContainerBlurHandler, true);

@@ -262,7 +262,7 @@ export function inferSubjectsFromMonthRecords(monthKey, candidateSubjects) {
 export function addBonus(reason, amount, date) {
     // 입력 유효성 검사
     if (!reason || typeof reason !== 'string' || reason.trim().length === 0) return false;
-    if (typeof amount !== 'number' || isNaN(amount) || amount <= 0) return false;
+    if (typeof amount !== 'number' || isNaN(amount) || amount === 0) return false;
     if (!(date instanceof Date) || isNaN(date.getTime())) return false;
     
     const dateKey = formatDate(date);

@@ -64,6 +64,9 @@ export function formatCurrency(amount) {
     if (typeof amount !== 'number' || isNaN(amount) || !isFinite(amount)) {
         amount = 0;
     }
+
+    const isNegative = amount < 0;
+    const absAmount = isNegative ? -amount : amount;
     
     const currencyInfo = state.settings?.currency;
     const langCode = state.user?.language || 'en';
@@ -78,22 +81,25 @@ export function formatCurrency(amount) {
             formatted = new Intl.NumberFormat(langCode, {
                 minimumFractionDigits: decimal,
                 maximumFractionDigits: decimal
-            }).format(amount);
+            }).format(absAmount);
         } catch (error) {
-            // 폴백: 간단한 포맷
-            formatted = amount.toFixed(decimal);
+            formatted = absAmount.toFixed(decimal);
         }
         
-        return position === 'before' 
-            ? `${symbol}${space}${formatted}` 
+        const value = position === 'before'
+            ? `${symbol}${space}${formatted}`
             : `${formatted}${space}${symbol}`;
+
+        return isNegative && absAmount !== 0 ? `-${value}` : value;
     }
     
     // 통화 정보가 없으면 기본 포맷
     try {
-        return amount.toLocaleString(langCode);
+        const formatted = absAmount.toLocaleString(langCode);
+        return isNegative && absAmount !== 0 ? `-${formatted}` : formatted;
     } catch (error) {
-        return String(amount);
+        const formatted = String(absAmount);
+        return isNegative && absAmount !== 0 ? `-${formatted}` : formatted;
     }
 }
 
@@ -103,12 +109,47 @@ export function formatCurrency(amount) {
  * @param {boolean} allowDecimal - 소수점 허용 여부
  * @returns {string} 정리된 숫자 문자열
  */
+export function cleanSignedNumericInput(valueStr) {
+    if (valueStr == null) return '';
+    let s = String(valueStr).replace(/[^0-9.-]/g, '');
+    const negative = s.includes('-');
+    s = s.replace(/-/g, '');
+    const dotIndex = s.indexOf('.');
+    if (dotIndex !== -1) {
+        s = s.slice(0, dotIndex + 1) + s.slice(dotIndex + 1).replace(/\./g, '');
+    }
+    if (negative) {
+        s = s === '' ? '-' : `-${s}`;
+    }
+    return s;
+}
+
+export function cleanUnsignedNumericInput(valueStr) {
+    if (valueStr == null) return '';
+    let s = String(valueStr).replace(/[^0-9.]/g, '');
+    const dotIndex = s.indexOf('.');
+    if (dotIndex !== -1) {
+        s = s.slice(0, dotIndex + 1) + s.slice(dotIndex + 1).replace(/\./g, '');
+    }
+    return s;
+}
+
+export function normalizeUnsignedNumericInput(value, allowDecimal = false) {
+    if (value === null || value === undefined) return '';
+    const str = String(value).replace(/-/g, '');
+    return normalizeNumericInput(str, allowDecimal);
+}
+
 export function normalizeNumericInput(value, allowDecimal = false) {
     if (value === null || value === undefined) return '';
     let str = String(value);
     if (str === '') return '';
+    if (str === '-') return '-';
 
     if (allowDecimal) {
+        const negative = str.startsWith('-');
+        if (negative) str = str.slice(1);
+        if (str === '') return '-';
         if (str.startsWith('.')) {
             str = `0${str}`;
         }
@@ -117,14 +158,23 @@ export function normalizeNumericInput(value, allowDecimal = false) {
         const decimalPart = parts[1];
         integerPart = integerPart.replace(/^0+(?=\d)/, '');
         if (integerPart === '') integerPart = '0';
+        let result;
         if (decimalPart !== undefined) {
-            return `${integerPart}.${decimalPart}`;
+            result = `${integerPart}.${decimalPart}`;
+        } else {
+            result = integerPart;
         }
-        return integerPart;
+        if (negative) {
+            result = result === '0' && decimalPart === undefined ? '-0' : `-${result}`;
+        }
+        return result;
     }
 
+    const negative = str.startsWith('-');
+    if (negative) str = str.slice(1);
     str = str.replace(/^0+(?=\d)/, '');
-    return str === '' ? '0' : str;
+    if (str === '') str = '0';
+    return negative ? (str === '0' ? '-0' : `-${str}`) : str;
 }
 
 /**

@@ -64,6 +64,7 @@
                 <h1 id="welcomeTitle"></h1>
                 <div id="welcomeMessage"></div>
                 <button id="welcomeNextBtn" class="next-btn"></button>
+                <button id="welcomeQuickStartBtn" class="start-btn welcome-quick-start-btn" type="button"></button>
             </div>
         </div>
 
@@ -325,8 +326,11 @@
                     <h3 id="bonusTitle" class="bonus-title"></h3>
                     <div class="add-additional">
                         <input type="text" id="additionalReason" placeholder="사유">
-                        <input type="number" id="additionalAmount" min="0" placeholder="금액">
-                        <button id="addAdditionalBtn"></button>
+                        <div class="additional-amount-wrapper">
+                            <button type="button" id="additionalAmountSignBtn" class="additional-amount-sign-btn" aria-label="+">+</button>
+                            <input type="text" id="additionalAmount" inputmode="decimal" autocomplete="off" enterkeyhint="done" placeholder="금액">
+                        </div>
+                        <button type="button" id="addAdditionalBtn"></button>
                     </div>
                     <div id="additionalList" class="additional-list"></div>
                 </section>

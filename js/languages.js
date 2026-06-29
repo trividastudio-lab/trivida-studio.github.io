@@ -58,6 +58,7 @@ export const languages = {
         "onboarding.country.detectFailed": "국가를 자동으로 감지하지 못했어요. 직접 선택해주세요.",
         "onboarding.welcome.title": "✨ 공부용돈앱에 오신 것을 환영합니다.",
         "onboarding.welcome.message": `안녕하세요 세 아이 아빠 윤파파입니다 😊<br><br>이 앱은 아이가 스스로 공부하고 그 노력을 기록하며 보상까지 연결할 수 있도록 만들었습니다.<br><br>👨‍👩‍👧‍👦 <strong>부모님께</strong><br>자녀와 함께 과목, 목표 시간, 용돈 금액을 정해주세요. 아이가 직접 정한 목표일수록 더 오래 실천하기 쉽습니다.<br><br>🙋 <strong>공부할 친구에게</strong><br>오늘 공부할 과목을 선택하고 꾸준히 해보세요. 하나씩 해낼수록 성취감이 쌓이고 스스로 모은 용돈도 더 소중해집니다. 함께 시작해봐요. 💪`,
+        "onboarding.welcome.quickStart": "바로 시작하기",
         "onboarding.name.label": "✏️ 공부할 친구의 이름을 입력해주세요.",
         "onboarding.name.desc": "이름을 입력하면 더 자연스럽게 사용할 수 있어요.",
         "onboarding.name.errorTooShort": "이름은 최소 {{min}}자 이상 입력해주세요.",
@@ -83,6 +84,7 @@ export const languages = {
         "action.close": "닫기",
         
         "dashboard.header.user": "{name}님",
+        "dashboard.header.userAnonymous": "당신의",
         "dashboard.header.subtitle": "공부 용돈 앱",
         "dashboard.summary.total": "총 용돈",
         "dashboard.progress.label": "목표 달성률 {percent}%",
@@ -95,6 +97,7 @@ export const languages = {
         "dashboard.bonus.amount": "금액",
         "dashboard.bonus.errorReason": "사유를 입력해주세요 😊",
         "dashboard.bonus.errorAmount": "금액을 올바르게 입력해주세요.",
+        "dashboard.bonus.toggleSign": "마이너스(+/−) 전환",
         "dashboard.bonus.errorDailyCap": "하루에 최대 5개까지만 추가할 수 있어요.",
         "statusBar.todayAmount": "오늘 {amount}",
         "statusBar.monthlyStreak": "이달 {count}일",
@@ -205,7 +208,7 @@ export const languages = {
         "api.export.success": "파일로 저장 완료",
         "api.export.location": "파일은 Documents 폴더에 저장되었습니다.",
         "api.export.savedToDocuments": "파일은 Documents 폴더에 저장되었습니다.",
-        "api.user.default": "사용자",
+        "api.user.default": "당신의",
 
 
         // 3-1. 프리미엄 인앱 결제 / 공부 확정 기능
@@ -306,6 +309,7 @@ export const languages = {
         "onboarding.country.detectFailed": "We couldn’t detect your country automatically. Please select it manually.",
         "onboarding.welcome.title": "✨ Welcome to Study Allowance App.",
         "onboarding.welcome.message": `Hello, I’m Yoon Papa, a father of three 😊<br><br>I made this app so children can study on their own, record their effort, and connect that effort to rewards.<br><br>👨‍👩‍👧‍👦 <strong>For parents</strong><br>Please decide the subjects, target study time, and allowance amount together with your child. Goals children help choose themselves are usually easier to keep over time.<br><br>🙋 <strong>For the student</strong><br>Choose the subjects you want to study today and keep going step by step. Each subject you finish builds confidence, and the allowance you earn through your own effort becomes even more meaningful. Let’s get started together. 💪`,
+        "onboarding.welcome.quickStart": "Start now",
         "onboarding.name.label": "✏️ Please enter the student’s name.",
         "onboarding.name.desc": "Entering a name makes the app feel more natural to use.",
         "onboarding.name.errorTooShort": "Please enter at least {{min}} character(s) for the name.",
@@ -331,6 +335,7 @@ export const languages = {
         "action.close": "Close",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Your",
         "dashboard.header.subtitle": "Study Allowance",
         "dashboard.summary.total": "Total Allowance",
         "dashboard.progress.label": "Goal Progress {percent}%",
@@ -343,6 +348,7 @@ export const languages = {
         "dashboard.bonus.amount": "Amount",
         "dashboard.bonus.errorReason": "Please enter a reason 😊",
         "dashboard.bonus.errorAmount": "Please enter a valid amount.",
+        "dashboard.bonus.toggleSign": "Toggle minus sign",
         "dashboard.bonus.errorDailyCap": "You can add up to 5 items per day.",
         "statusBar.todayAmount": "Today {amount}",
         "statusBar.monthlyStreak": "{count}d this month",
@@ -453,7 +459,7 @@ export const languages = {
         "api.export.success": "Saved to file successfully",
         "api.export.location": "The file has been saved in the Documents folder.",
         "api.export.savedToDocuments": "The file has been saved in the Documents folder.",
-        "api.user.default": "User",
+        "api.user.default": "Your",
 
 
         // 3-1. Premium in-app purchase / Study Lock feature
@@ -552,6 +558,7 @@ export const languages = {
         "onboarding.country.detectFailed": "We couldn’t detect your country automatically. Please select it manually.",
         "onboarding.welcome.title": "✨ Welcome to Study Pocket Money.",
         "onboarding.welcome.message": `Hello, I’m Yoon Papa, a father of three 😊<br><br>I made this app so children can study on their own, record their effort, and connect that effort to rewards.<br><br>👨‍👩‍👧‍👦 <strong>For parents</strong><br>Please agree the subjects, target study time, and how much pocket money they can earn together with your child. Goals children help choose themselves are usually easier to stick to over time.<br><br>🙋 <strong>For the student</strong><br>Choose the subjects you want to study today and keep going step by step. Each subject you finish builds confidence, and the pocket money you earn through your own effort feels even more meaningful. Let’s get started together. 💪`,
+        "onboarding.welcome.quickStart": "Start now",
         "onboarding.name.label": "✏️ Please enter the student’s name.",
         "onboarding.name.desc": "Entering a name makes the app feel more natural to use.",
         "onboarding.name.errorTooShort": "Please enter at least {{min}} character(s) for the name.",
@@ -577,6 +584,7 @@ export const languages = {
         "action.close": "Close",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Your",
         "dashboard.header.subtitle": "Study pocket money",
         "dashboard.summary.total": "Total pocket money",
         "dashboard.progress.label": "Goal progress {percent}%",
@@ -589,6 +597,7 @@ export const languages = {
         "dashboard.bonus.amount": "Amount",
         "dashboard.bonus.errorReason": "Please enter a reason 😊",
         "dashboard.bonus.errorAmount": "Please enter a valid amount.",
+        "dashboard.bonus.toggleSign": "Toggle minus sign",
         "dashboard.bonus.errorDailyCap": "You can add up to 5 items per day.",
         "statusBar.todayAmount": "Today {amount}",
         "statusBar.monthlyStreak": "{count}d this month",
@@ -699,7 +708,7 @@ export const languages = {
         "api.export.success": "Saved to file successfully",
         "api.export.location": "The file has been saved to your Documents folder.",
         "api.export.savedToDocuments": "The file has been saved to your Documents folder.",
-        "api.user.default": "User",
+        "api.user.default": "Your",
 
 
         // 3-1. Premium in-app purchase / Study Lock feature
@@ -795,6 +804,7 @@ export const languages = {
         "onboarding.country.detectFailed": "国を自動で検出できませんでした。直接選択してください。",
         "onboarding.welcome.title": "✨ Study Allowance Appへようこそ。",
         "onboarding.welcome.message": `こんにちは 三児の父 ユンパパです 😊<br><br>このアプリは 子どもが自分で勉強し その努力を記録し ごほうびにつなげられるように作りました。<br><br>👨‍👩‍👧‍👦 <strong>保護者の方へ</strong><br>お子さまと一緒に 科目 目標時間 おこづかいの金額を決めてください。自分で決めた目標ほど 長く続けやすくなります。<br><br>🙋 <strong>勉強するお子さまへ</strong><br>今日勉強する科目を選んで 少しずつ続けてみましょう。一つずつやり終えるたびに達成感が積み重なり 自分で集めたおこづかいもより大切に感じられるはずです。一緒に始めましょう。💪`,
+        "onboarding.welcome.quickStart": "すぐ始める",
         "onboarding.name.label": "✏️ 勉強するお子さまの名前を入力してください。",
         "onboarding.name.desc": "名前を入力すると、より自然に使えます。",
         "onboarding.name.errorTooShort": "名前は最低{{min}}文字以上入力してください。",
@@ -820,6 +830,7 @@ export const languages = {
         "action.close": "閉じる",
         
         "dashboard.header.user": "{name}さん",
+        "dashboard.header.userAnonymous": "あなたの",
         "dashboard.header.subtitle": "勉強のおこづかい",
         "dashboard.summary.total": "合計おこづかい",
         "dashboard.progress.label": "目標達成率 {percent}%",
@@ -832,6 +843,7 @@ export const languages = {
         "dashboard.bonus.amount": "金額",
         "dashboard.bonus.errorReason": "理由を入力してください 😊",
         "dashboard.bonus.errorAmount": "金額を正しく入力してください。",
+        "dashboard.bonus.toggleSign": "マイナス切替",
         "dashboard.bonus.errorDailyCap": "1日に追加できるのは最大5件までです。",
         "statusBar.todayAmount": "今日 {amount}",
         "statusBar.monthlyStreak": "今月 {count}日",
@@ -942,7 +954,7 @@ export const languages = {
         "api.export.success": "ファイルへの保存が完了しました",
         "api.export.location": "ファイルは Documents フォルダに保存されました。",
         "api.export.savedToDocuments": "ファイルは Documents フォルダに保存されました。",
-        "api.user.default": "ユーザー",
+        "api.user.default": "あなたの",
 
 
         // 3-1. プレミアム アプリ内課金 / 勉強確定機能
@@ -1039,6 +1051,7 @@ export const languages = {
         "onboarding.country.detectFailed": "无法自动检测您的国家或地区。请手动选择。",
         "onboarding.welcome.title": "✨ 欢迎使用学习零花钱应用。",
         "onboarding.welcome.message": `您好，我是三个孩子的爸爸 Yoon Papa 😊<br><br>我制作这款应用，是希望孩子能够主动学习，记录自己的努力，并把努力和奖励自然地连接起来。<br><br>👨‍👩‍👧‍👦 <strong>给家长</strong><br>请和孩子一起设定学习科目、目标时间和零花钱金额。孩子亲自参与决定的目标，往往更容易长期坚持。<br><br>🙋 <strong>给学习中的孩子</strong><br>请选择今天要学习的科目，然后一步一步坚持完成。每完成一项，成就感都会一点点积累，靠自己努力获得的零花钱也会变得更有意义。让我们一起开始吧。💪`,
+        "onboarding.welcome.quickStart": "立即开始",
         "onboarding.name.label": "✏️ 请输入学习孩子的名字。",
         "onboarding.name.desc": "输入名字后，使用起来会更自然。",
         "onboarding.name.errorTooShort": "名字至少需要输入 {{min}} 个字符。",
@@ -1064,6 +1077,7 @@ export const languages = {
         "action.close": "关闭",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "你的",
         "dashboard.header.subtitle": "学习零花钱",
         "dashboard.summary.total": "零花钱总额",
         "dashboard.progress.label": "目标完成率 {percent}%",
@@ -1076,6 +1090,7 @@ export const languages = {
         "dashboard.bonus.amount": "金额",
         "dashboard.bonus.errorReason": "请输入原因 😊",
         "dashboard.bonus.errorAmount": "请输入正确的金额。",
+        "dashboard.bonus.toggleSign": "切换正负号",
         "dashboard.bonus.errorDailyCap": "每天最多只能添加 5 项。",
         "statusBar.todayAmount": "今天 {amount}",
         "statusBar.monthlyStreak": "本月 {count}天",
@@ -1186,7 +1201,7 @@ export const languages = {
         "api.export.success": "已成功保存到文件",
         "api.export.location": "文件已保存到 Documents 文件夹。",
         "api.export.savedToDocuments": "文件已保存到 Documents 文件夹。",
-        "api.user.default": "用户",
+        "api.user.default": "你的",
 
 
         // 3-1. 高级功能应用内购买 / 学习确认锁定功能
@@ -1283,6 +1298,7 @@ export const languages = {
         "onboarding.country.detectFailed": "無法自動偵測您的國家或地區，請手動選擇。",
         "onboarding.welcome.title": "✨ 歡迎使用學習零用錢 App。",
         "onboarding.welcome.message": `您好 我是三個孩子的爸爸 Yoon Papa 😊<br><br>我製作這款 App 是希望孩子能夠主動學習 記錄自己的努力 並將努力自然地連結到獎勵。<br><br>👨‍👩‍👧‍👦 <strong>給家長</strong><br>請和孩子一起設定學習科目 目標時間 與零用錢金額。孩子親自參與決定的目標 往往更容易長久堅持。<br><br>🙋 <strong>給正在學習的孩子</strong><br>請選擇今天要學習的科目 然後一步一步持續完成。每完成一項 成就感都會慢慢累積 靠自己努力得到的零用錢也會變得更有意義。一起開始吧。💪`,
+        "onboarding.welcome.quickStart": "立即開始",
         "onboarding.name.label": "✏️ 請輸入學習孩子的名字。",
         "onboarding.name.desc": "輸入名字後 使用起來會更自然。",
         "onboarding.name.errorTooShort": "名字至少需要輸入 {{min}} 個字元。",
@@ -1308,6 +1324,7 @@ export const languages = {
         "action.close": "關閉",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "你的",
         "dashboard.header.subtitle": "學習零用錢",
         "dashboard.summary.total": "零用錢總額",
         "dashboard.progress.label": "目標達成率 {percent}%",
@@ -1320,6 +1337,7 @@ export const languages = {
         "dashboard.bonus.amount": "金額",
         "dashboard.bonus.errorReason": "請輸入原因 😊",
         "dashboard.bonus.errorAmount": "請輸入正確的金額。",
+        "dashboard.bonus.toggleSign": "切換正負號",
         "dashboard.bonus.errorDailyCap": "每天最多只能新增 5 項。",
         "statusBar.todayAmount": "今天 {amount}",
         "statusBar.monthlyStreak": "本月 {count}天",
@@ -1430,7 +1448,7 @@ export const languages = {
         "api.export.success": "已成功儲存到檔案",
         "api.export.location": "檔案已儲存到 Documents 資料夾。",
         "api.export.savedToDocuments": "檔案已儲存到 Documents 資料夾。",
-        "api.user.default": "使用者",
+        "api.user.default": "你的",
 
 
         // 3-1. 進階功能 App 內購 / 學習確認鎖定功能
@@ -1527,6 +1545,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Không thể tự động phát hiện quốc gia của bạn. Vui lòng chọn thủ công.",
         "onboarding.welcome.title": "✨ Chào mừng bạn đến với ứng dụng Study Allowance.",
         "onboarding.welcome.message": `Xin chào Tôi là Yoon Papa một người cha của ba con 😊<br><br>Tôi tạo ra ứng dụng này để các em có thể tự học ghi lại sự cố gắng của mình và gắn những nỗ lực ấy với phần thưởng một cách tự nhiên.<br><br>👨‍👩‍👧‍👦 <strong>Dành cho phụ huynh</strong><br>Hãy cùng con đặt ra môn học thời gian mục tiêu và số tiền thưởng. Những mục tiêu mà trẻ tự tham gia quyết định thường sẽ dễ duy trì lâu dài hơn.<br><br>🙋 <strong>Dành cho bạn nhỏ đang học</strong><br>Hãy chọn những môn bạn muốn học hôm nay và cố gắng hoàn thành từng bước một. Mỗi lần hoàn thành xong một môn cảm giác thành tựu sẽ dần tích lũy và số tiền con tự kiếm được từ nỗ lực của mình cũng sẽ trở nên ý nghĩa hơn. Hãy cùng bắt đầu nhé. 💪`,
+        "onboarding.welcome.quickStart": "Bắt đầu ngay",
         "onboarding.name.label": "✏️ Vui lòng nhập tên của bé học tập.",
         "onboarding.name.desc": "Nhập tên sẽ giúp ứng dụng trở nên tự nhiên hơn khi sử dụng.",
         "onboarding.name.errorTooShort": "Tên phải có ít nhất {{min}} ký tự.",
@@ -1552,6 +1571,7 @@ export const languages = {
         "action.close": "Đóng",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Của bạn",
         "dashboard.header.subtitle": "Tiền thưởng học tập",
         "dashboard.summary.total": "Tổng tiền thưởng",
         "dashboard.progress.label": "Tỷ lệ hoàn thành mục tiêu {percent}%",
@@ -1564,6 +1584,7 @@ export const languages = {
         "dashboard.bonus.amount": "Số tiền",
         "dashboard.bonus.errorReason": "Vui lòng nhập lý do 😊",
         "dashboard.bonus.errorAmount": "Vui lòng nhập số tiền hợp lệ.",
+        "dashboard.bonus.toggleSign": "Đổi dấu âm",
         "dashboard.bonus.errorDailyCap": "Mỗi ngày chỉ có thể thêm tối đa 5 mục.",
         "statusBar.todayAmount": "Hôm nay {amount}",
         "statusBar.monthlyStreak": "Tháng: {count} ngày",
@@ -1674,7 +1695,7 @@ export const languages = {
         "api.export.success": "Đã lưu vào tệp thành công",
         "api.export.location": "Tệp đã được lưu trong thư mục Documents.",
         "api.export.savedToDocuments": "Tệp đã được lưu trong thư mục Documents.",
-        "api.user.default": "Người dùng",
+        "api.user.default": "Của bạn",
 
 
         // 3-1. Mua trong ứng dụng cao cấp / tính năng khóa xác nhận học tập
@@ -1770,6 +1791,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Nous n’avons pas pu détecter automatiquement votre pays. Veuillez le sélectionner manuellement.",
         "onboarding.welcome.title": "✨ Bienvenue dans l’application Study Allowance.",
         "onboarding.welcome.message": `Bonjour Je suis Yoon Papa père de trois enfants 😊<br><br>J’ai créé cette application pour que les enfants puissent étudier par eux-mêmes garder une trace de leurs efforts et relier naturellement ces efforts à une récompense.<br><br>👨‍👩‍👧‍👦 <strong>Pour les parents</strong><br>Choisissez avec votre enfant les matières le temps d’étude visé et le montant de l’argent de poche. Les objectifs que l’enfant aide à définir lui-même sont souvent plus faciles à tenir sur la durée.<br><br>🙋 <strong>Pour l’enfant qui étudie</strong><br>Choisis les matières que tu veux étudier aujourd’hui et avance pas à pas. Chaque matière terminée renforce le sentiment d’accomplissement et l’argent de poche gagné grâce à tes propres efforts devient encore plus précieux. Commençons ensemble. 💪`,
+        "onboarding.welcome.quickStart": "Commencer maintenant",
         "onboarding.name.label": "✏️ Veuillez saisir le prénom de l’enfant qui étudie.",
         "onboarding.name.desc": "Saisir un prénom rend l’utilisation plus naturelle.",
         "onboarding.name.errorTooShort": "Le prénom doit contenir au moins {{min}} caractère(s).",
@@ -1795,6 +1817,7 @@ export const languages = {
         "action.close": "Fermer",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Votre",
         "dashboard.header.subtitle": "Argent de poche scolaire",
         "dashboard.summary.total": "Argent de poche total",
         "dashboard.progress.label": "Progression de l’objectif {percent}%",
@@ -1807,6 +1830,7 @@ export const languages = {
         "dashboard.bonus.amount": "Montant",
         "dashboard.bonus.errorReason": "Veuillez saisir une raison 😊",
         "dashboard.bonus.errorAmount": "Veuillez saisir un montant valide.",
+        "dashboard.bonus.toggleSign": "Inverser le signe",
         "dashboard.bonus.errorDailyCap": "Vous pouvez ajouter jusqu’à 5 éléments par jour.",
         "statusBar.todayAmount": "Aujourd’hui {amount}",
         "statusBar.monthlyStreak": "{count} j · ce mois",
@@ -1917,7 +1941,7 @@ export const languages = {
         "api.export.success": "Enregistrement dans le fichier réussi",
         "api.export.location": "Le fichier a été enregistré dans le dossier Documents.",
         "api.export.savedToDocuments": "Le fichier a été enregistré dans le dossier Documents.",
-        "api.user.default": "Utilisateur",
+        "api.user.default": "Votre",
 
 
         // 3-1. Achat intégré premium / fonction de verrouillage de validation d’étude
@@ -2013,6 +2037,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Non siamo riusciti a rilevare automaticamente il tuo Paese. Selezionalo manualmente.",
         "onboarding.welcome.title": "✨ Benvenuto nell’app Study Allowance.",
         "onboarding.welcome.message": `Ciao Sono Yoon Papa padre di tre figli 😊<br><br>Ho creato quest’app perché i bambini possano studiare da soli registrare i propri sforzi e collegare in modo naturale l’impegno a una ricompensa.<br><br>👨‍👩‍👧‍👦 <strong>Per i genitori</strong><br>Scegliete insieme a vostro figlio le materie il tempo di studio obiettivo e l’importo della paghetta. Gli obiettivi a cui i bambini partecipano direttamente sono di solito più facili da mantenere nel tempo.<br><br>🙋 <strong>Per chi studia</strong><br>Scegli le materie che vuoi studiare oggi e vai avanti un passo alla volta. Ogni materia completata aumenta il senso di soddisfazione e la paghetta guadagnata con il tuo impegno diventa ancora più preziosa. Iniziamo insieme. 💪`,
+        "onboarding.welcome.quickStart": "Inizia subito",
         "onboarding.name.label": "✏️ Inserisci il nome del bambino o della bambina che studia.",
         "onboarding.name.desc": "Inserire un nome rende l’esperienza più naturale.",
         "onboarding.name.errorTooShort": "Il nome deve contenere almeno {{min}} carattere/i.",
@@ -2038,6 +2063,7 @@ export const languages = {
         "action.close": "Chiudi",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Il tuo",
         "dashboard.header.subtitle": "Paghetta da studio",
         "dashboard.summary.total": "Paghetta totale",
         "dashboard.progress.label": "Progresso obiettivo {percent}%",
@@ -2050,6 +2076,7 @@ export const languages = {
         "dashboard.bonus.amount": "Importo",
         "dashboard.bonus.errorReason": "Inserisci un motivo 😊",
         "dashboard.bonus.errorAmount": "Inserisci un importo valido.",
+        "dashboard.bonus.toggleSign": "Inverti segno",
         "dashboard.bonus.errorDailyCap": "Puoi aggiungere al massimo 5 elementi al giorno.",
         "statusBar.todayAmount": "Oggi {amount}",
         "statusBar.monthlyStreak": "{count} gg · mese",
@@ -2160,7 +2187,7 @@ export const languages = {
         "api.export.success": "Salvataggio su file completato",
         "api.export.location": "Il file è stato salvato nella cartella Documents.",
         "api.export.savedToDocuments": "Il file è stato salvato nella cartella Documents.",
-        "api.user.default": "Utente",
+        "api.user.default": "Il tuo",
 
 
         // 3-1. Acquisto premium in-app / funzione blocco conferma studio
@@ -2256,6 +2283,7 @@ export const languages = {
         "onboarding.country.detectFailed": "No pudimos detectar tu país automáticamente. Selecciónalo manualmente.",
         "onboarding.welcome.title": "✨ Te damos la bienvenida a la app Study Allowance.",
         "onboarding.welcome.message": `Hola Soy Yoon Papa padre de tres hijos 😊<br><br>Creé esta app para que los niños puedan estudiar por sí mismos registrar su esfuerzo y conectar de forma natural ese esfuerzo con una recompensa.<br><br>👨‍👩‍👧‍👦 <strong>Para los padres</strong><br>Decidan junto con su hijo o hija las materias el tiempo de estudio objetivo y la cantidad de la paga. Los objetivos en los que los niños participan directamente suelen ser más fáciles de mantener con el tiempo.<br><br>🙋 <strong>Para quien va a estudiar</strong><br>Elige las materias que quieres estudiar hoy y avanza paso a paso. Cada materia terminada aumenta la sensación de logro y la paga que consigues con tu propio esfuerzo se vuelve aún más valiosa. Empecemos juntos. 💪`,
+        "onboarding.welcome.quickStart": "Empezar ahora",
         "onboarding.name.label": "✏️ Escribe el nombre del niño o la niña que va a estudiar.",
         "onboarding.name.desc": "Escribir un nombre hace que la experiencia sea más natural.",
         "onboarding.name.errorTooShort": "El nombre debe tener al menos {{min}} carácter(es).",
@@ -2281,6 +2309,7 @@ export const languages = {
         "action.close": "Cerrar",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Tu",
         "dashboard.header.subtitle": "Mesada por estudiar",
         "dashboard.summary.total": "Paga total",
         "dashboard.progress.label": "Progreso del objetivo {percent}%",
@@ -2293,6 +2322,7 @@ export const languages = {
         "dashboard.bonus.amount": "Cantidad",
         "dashboard.bonus.errorReason": "Escribe un motivo 😊",
         "dashboard.bonus.errorAmount": "Escribe una cantidad válida.",
+        "dashboard.bonus.toggleSign": "Cambiar signo",
         "dashboard.bonus.errorDailyCap": "Puedes añadir hasta 5 elementos al día.",
         "statusBar.todayAmount": "Hoy {amount}",
         "statusBar.monthlyStreak": "{count} d · este mes",
@@ -2403,7 +2433,7 @@ export const languages = {
         "api.export.success": "Guardado en archivo completado",
         "api.export.location": "El archivo se ha guardado en la carpeta Documents.",
         "api.export.savedToDocuments": "El archivo se ha guardado en la carpeta Documents.",
-        "api.user.default": "Usuario",
+        "api.user.default": "Tu",
 
 
         // 3-1. Compra premium dentro de la app / función de bloqueo de estudio
@@ -2499,6 +2529,7 @@ export const languages = {
         "onboarding.country.detectFailed": "हम आपका देश अपने आप पहचान नहीं सके। कृपया इसे स्वयं चुनें।",
         "onboarding.welcome.title": "✨ Study Allowance ऐप में आपका स्वागत है।",
         "onboarding.welcome.message": `नमस्ते मैं यौन पापा हूँ और तीन बच्चों का पिता हूँ 😊<br><br>मैंने यह ऐप इसलिए बनाया है ताकि बच्चे खुद से पढ़ाई कर सकें अपने प्रयास को दर्ज कर सकें और उस मेहनत को स्वाभाविक रूप से इनाम से जोड़ सकें।<br><br>👨‍👩‍👧‍👦 <strong>माता-पिता के लिए</strong><br>कृपया अपने बच्चे के साथ मिलकर विषय पढ़ाई का लक्ष्य समय और पॉकेट मनी की राशि तय करें। जिन लक्ष्यों को बच्चे खुद तय करने में शामिल होते हैं उन्हें लंबे समय तक निभाना आमतौर पर आसान होता है।<br><br>🙋 <strong>पढ़ाई करने वाले बच्चे के लिए</strong><br>आज जिन विषयों को पढ़ना है उन्हें चुनो और एक-एक कदम आगे बढ़ो। हर पूरा किया गया विषय उपलब्धि की भावना को बढ़ाता है और अपनी मेहनत से कमाई हुई पॉकेट मनी और भी अधिक मूल्यवान लगती है। आइए साथ में शुरू करें। 💪`,
+        "onboarding.welcome.quickStart": "अभी शुरू करें",
         "onboarding.name.label": "✏️ पढ़ाई करने वाले बच्चे का नाम दर्ज करें।",
         "onboarding.name.desc": "नाम दर्ज करने से ऐप का उपयोग और स्वाभाविक लगेगा।",
         "onboarding.name.errorTooShort": "नाम कम से कम {{min}} अक्षरों का होना चाहिए।",
@@ -2524,6 +2555,7 @@ export const languages = {
         "action.close": "बंद करें",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "आपका",
         "dashboard.header.subtitle": "पढ़ाई का पॉकेट मनी",
         "dashboard.summary.total": "कुल पॉकेट मनी",
         "dashboard.progress.label": "लक्ष्य प्रगति {percent}%",
@@ -2536,6 +2568,7 @@ export const languages = {
         "dashboard.bonus.amount": "राशि",
         "dashboard.bonus.errorReason": "कृपया कारण लिखें 😊",
         "dashboard.bonus.errorAmount": "कृपया सही राशि दर्ज करें।",
+        "dashboard.bonus.toggleSign": "ऋणात्मक चिह्न",
         "dashboard.bonus.errorDailyCap": "आप एक दिन में अधिकतम 5 चीज़ें जोड़ सकते हैं।",
         "statusBar.todayAmount": "आज {amount}",
         "statusBar.monthlyStreak": "इस माह {count} दिन",
@@ -2646,7 +2679,7 @@ export const languages = {
         "api.export.success": "फ़ाइल में सफलतापूर्वक सहेजा गया",
         "api.export.location": "फ़ाइल Documents फ़ोल्डर में सहेजी गई है।",
         "api.export.savedToDocuments": "फ़ाइल Documents फ़ोल्डर में सहेजी गई है।",
-        "api.user.default": "उपयोगकर्ता",
+        "api.user.default": "आपका",
 
 
         // 3-1. प्रीमियम इन-ऐप खरीद / स्टडी लॉक सुविधा
@@ -2742,6 +2775,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Não foi possível detectar seu país automaticamente. Selecione-o manualmente.",
         "onboarding.welcome.title": "✨ Boas-vindas ao app Study Allowance.",
         "onboarding.welcome.message": `Olá Eu sou Yoon Papa pai de três filhos 😊<br><br>Criei este app para que as crianças possam estudar sozinhas registrar seus esforços e ligar esse esforço a uma recompensa de forma natural.<br><br>👨‍👩‍👧‍👦 <strong>Para os pais</strong><br>Definam junto com seu filho ou filha as matérias o tempo de estudo como meta e o valor da mesada. Metas que a própria criança ajuda a definir costumam ser mais fáceis de manter ao longo do tempo.<br><br>🙋 <strong>Para quem vai estudar</strong><br>Escolha as matérias que você quer estudar hoje e avance passo a passo. Cada matéria concluída aumenta a sensação de conquista e a mesada que você ganha com seu próprio esforço se torna ainda mais valiosa. Vamos começar juntos. 💪`,
+        "onboarding.welcome.quickStart": "Começar agora",
         "onboarding.name.label": "✏️ Digite o nome da criança que vai estudar.",
         "onboarding.name.desc": "Inserir um nome deixa a experiência mais natural.",
         "onboarding.name.errorTooShort": "O nome deve ter pelo menos {{min}} caractere(s).",
@@ -2767,6 +2801,7 @@ export const languages = {
         "action.close": "Fechar",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Seu",
         "dashboard.header.subtitle": "Mesada de estudos",
         "dashboard.summary.total": "Mesada total",
         "dashboard.progress.label": "Progresso da meta {percent}%",
@@ -2779,6 +2814,7 @@ export const languages = {
         "dashboard.bonus.amount": "Valor",
         "dashboard.bonus.errorReason": "Digite um motivo 😊",
         "dashboard.bonus.errorAmount": "Digite um valor válido.",
+        "dashboard.bonus.toggleSign": "Alternar sinal",
         "dashboard.bonus.errorDailyCap": "Você pode adicionar até 5 itens por dia.",
         "statusBar.todayAmount": "Hoje {amount}",
         "statusBar.monthlyStreak": "{count} d · este mês",
@@ -2889,7 +2925,7 @@ export const languages = {
         "api.export.success": "Salvo em arquivo com sucesso",
         "api.export.location": "O arquivo foi salvo na pasta Documents.",
         "api.export.savedToDocuments": "O arquivo foi salvo na pasta Documents.",
-        "api.user.default": "Usuário",
+        "api.user.default": "Seu",
 
 
         // 3-1. Compra premium no app / função de bloqueio do estudo
@@ -2985,6 +3021,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Не удалось автоматически определить вашу страну. Пожалуйста, выберите её вручную.",
         "onboarding.welcome.title": "✨ Добро пожаловать в приложение Study Allowance.",
         "onboarding.welcome.message": `Здравствуйте Я Юн Папа отец троих детей 😊<br><br>Я создал это приложение, чтобы дети могли заниматься самостоятельно отмечать свои старания и естественным образом связывать эти усилия с наградой.<br><br>👨‍👩‍👧‍👦 <strong>Для родителей</strong><br>Определите вместе с ребёнком предметы целевое время занятий и сумму карманных денег. Цели, в выборе которых ребёнок участвует сам, обычно легче соблюдать долгое время.<br><br>🙋 <strong>Для ребёнка, который учится</strong><br>Выбери предметы, которые хочешь изучать сегодня, и двигайся шаг за шагом. Каждый завершённый предмет усиливает чувство достижения, а карманные деньги, заработанные собственными усилиями, становятся ещё ценнее. Давайте начнём вместе. 💪`,
+        "onboarding.welcome.quickStart": "Начать сейчас",
         "onboarding.name.label": "✏️ Введите имя ребёнка, который будет заниматься.",
         "onboarding.name.desc": "Если указать имя, пользоваться приложением будет удобнее и естественнее.",
         "onboarding.name.errorTooShort": "Имя должно содержать не менее {{min}} символов.",
@@ -3010,6 +3047,7 @@ export const languages = {
         "action.close": "Закрыть",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Ваш",
         "dashboard.header.subtitle": "Карманные деньги за учёбу",
         "dashboard.summary.total": "Всего карманных денег",
         "dashboard.progress.label": "Прогресс цели {percent}%",
@@ -3022,6 +3060,7 @@ export const languages = {
         "dashboard.bonus.amount": "Сумма",
         "dashboard.bonus.errorReason": "Пожалуйста, укажите причину 😊",
         "dashboard.bonus.errorAmount": "Пожалуйста, введите корректную сумму.",
+        "dashboard.bonus.toggleSign": "Сменить знак",
         "dashboard.bonus.errorDailyCap": "В день можно добавить не более 5 записей.",
         "statusBar.todayAmount": "Сегодня {amount}",
         "statusBar.monthlyStreak": "Мес.: {count} дн.",
@@ -3132,7 +3171,7 @@ export const languages = {
         "api.export.success": "Файл успешно сохранён",
         "api.export.location": "Файл сохранён в папке Documents.",
         "api.export.savedToDocuments": "Файл сохранён в папке Documents.",
-        "api.user.default": "Пользователь",
+        "api.user.default": "Ваш",
 
 
         // 3-1. Премиум-покупка в приложении / функция блокировки учёбы
@@ -3228,6 +3267,7 @@ export const languages = {
         "onboarding.country.detectFailed": "تعذر علينا اكتشاف دولتك تلقائيًا. يرجى اختيارها يدويًا.",
         "onboarding.welcome.title": "✨ مرحبًا بك في تطبيق Study Allowance.",
         "onboarding.welcome.message": `مرحبًا أنا يون بابا وأب لثلاثة أطفال 😊<br><br>أنشأت هذا التطبيق لكي يتمكن الأطفال من الدراسة بأنفسهم وتسجيل جهودهم وربط هذا الجهد بالمكافأة بشكل طبيعي.<br><br>👨‍👩‍👧‍👦 <strong>للآباء والأمهات</strong><br>يرجى تحديد المواد ووقت الدراسة المستهدف ومبلغ المصروف مع طفلكم. الأهداف التي يشارك الطفل في تحديدها بنفسه تكون عادة أسهل في الاستمرار عليها لفترة طويلة.<br><br>🙋 <strong>للطفل الذي سيدرس</strong><br>اختر المواد التي تريد دراستها اليوم وتقدم خطوة بخطوة. كل مادة تُكملها تزيد شعورك بالإنجاز ويصبح المصروف الذي تكسبه بجهدك أكثر قيمة. لنبدأ معًا. 💪`,
+        "onboarding.welcome.quickStart": "ابدأ الآن",
         "onboarding.name.label": "✏️ أدخل اسم الطفل الذي سيدرس.",
         "onboarding.name.desc": "إدخال الاسم يجعل استخدام التطبيق أكثر طبيعية.",
         "onboarding.name.errorTooShort": "يجب أن يحتوي الاسم على {{min}} أحرف على الأقل.",
@@ -3253,6 +3293,7 @@ export const languages = {
         "action.close": "إغلاق",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "خاصتك",
         "dashboard.header.subtitle": "مصروف مدرسي",
         "dashboard.summary.total": "إجمالي المصروف",
         "dashboard.progress.label": "تقدم الهدف {percent}%",
@@ -3265,6 +3306,7 @@ export const languages = {
         "dashboard.bonus.amount": "المبلغ",
         "dashboard.bonus.errorReason": "يرجى إدخال السبب 😊",
         "dashboard.bonus.errorAmount": "يرجى إدخال مبلغ صحيح.",
+        "dashboard.bonus.toggleSign": "تبديل الإشارة",
         "dashboard.bonus.errorDailyCap": "يمكنك إضافة 5 عناصر كحد أقصى في اليوم.",
         "statusBar.todayAmount": "اليوم {amount}",
         "statusBar.monthlyStreak": "الشهر: {count} يوم",
@@ -3375,7 +3417,7 @@ export const languages = {
         "api.export.success": "تم الحفظ في الملف بنجاح",
         "api.export.location": "تم حفظ الملف في مجلد Documents.",
         "api.export.savedToDocuments": "تم حفظ الملف في مجلد Documents.",
-        "api.user.default": "المستخدم",
+        "api.user.default": "خاصتك",
 
 
         // 3-1. الشراء المميز داخل التطبيق / ميزة قفل الدراسة
@@ -3471,6 +3513,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Ihr Land konnte nicht automatisch erkannt werden. Bitte wählen Sie es manuell aus.",
         "onboarding.welcome.title": "✨ Willkommen in der Study Allowance App.",
         "onboarding.welcome.message": `Hallo Ich bin Yoon Papa Vater von drei Kindern 😊<br><br>Ich habe diese App entwickelt, damit Kinder selbstständig lernen ihre Anstrengungen festhalten und diese Mühe ganz natürlich mit einer Belohnung verbinden können.<br><br>👨‍👩‍👧‍👦 <strong>Für Eltern</strong><br>Legen Sie gemeinsam mit Ihrem Kind die Fächer die Lernzeit als Ziel und den Betrag des Taschengelds fest. Ziele, an deren Festlegung Kinder selbst beteiligt sind, lassen sich meist leichter über längere Zeit einhalten.<br><br>🙋 <strong>Für das lernende Kind</strong><br>Wähle die Fächer aus, die du heute lernen möchtest, und gehe Schritt für Schritt voran. Jedes abgeschlossene Fach stärkt das Gefühl, etwas geschafft zu haben, und das Taschengeld, das du dir mit deiner eigenen Mühe verdienst, wird noch wertvoller. Lass uns gemeinsam anfangen. 💪`,
+        "onboarding.welcome.quickStart": "Sofort starten",
         "onboarding.name.label": "✏️ Bitte geben Sie den Namen des Kindes ein, das lernen wird.",
         "onboarding.name.desc": "Wenn ein Name eingegeben wird, fühlt sich die Nutzung natürlicher an.",
         "onboarding.name.errorTooShort": "Der Name muss mindestens {{min}} Zeichen lang sein.",
@@ -3496,6 +3539,7 @@ export const languages = {
         "action.close": "Schließen",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Dein",
         "dashboard.header.subtitle": "Taschengeld fürs Lernen",
         "dashboard.summary.total": "Gesamtes Taschengeld",
         "dashboard.progress.label": "Zielfortschritt {percent}%",
@@ -3508,6 +3552,7 @@ export const languages = {
         "dashboard.bonus.amount": "Betrag",
         "dashboard.bonus.errorReason": "Bitte geben Sie einen Grund ein 😊",
         "dashboard.bonus.errorAmount": "Bitte geben Sie einen gültigen Betrag ein.",
+        "dashboard.bonus.toggleSign": "Vorzeichen wechseln",
         "dashboard.bonus.errorDailyCap": "Sie können pro Tag bis zu 5 Einträge hinzufügen.",
         "statusBar.todayAmount": "Heute {amount}",
         "statusBar.monthlyStreak": "{count} T · Mon.",
@@ -3618,7 +3663,7 @@ export const languages = {
         "api.export.success": "Erfolgreich in Datei gespeichert",
         "api.export.location": "Die Datei wurde im Ordner Documents gespeichert.",
         "api.export.savedToDocuments": "Die Datei wurde im Ordner Documents gespeichert.",
-        "api.user.default": "Benutzer",
+        "api.user.default": "Dein",
 
 
         // 3-1. Premium-In-App-Kauf / Lernsperre
@@ -3714,6 +3759,7 @@ export const languages = {
         "onboarding.country.detectFailed": "เราไม่สามารถตรวจพบประเทศของคุณได้โดยอัตโนมัติ กรุณาเลือกด้วยตนเอง",
         "onboarding.welcome.title": "✨ ยินดีต้อนรับสู่แอป Study Allowance",
         "onboarding.welcome.message": `สวัสดีครับ ผมคือ Yoon Papa คุณพ่อของลูกสามคน 😊<br><br>ผมสร้างแอปนี้ขึ้นมาเพื่อให้เด็ก ๆ สามารถเรียนด้วยตัวเอง บันทึกความพยายามของตัวเอง และเชื่อมโยงความพยายามนั้นเข้ากับรางวัลได้อย่างเป็นธรรมชาติ<br><br>👨‍👩‍👧‍👦 <strong>สำหรับผู้ปกครอง</strong><br>กรุณาช่วยกันกำหนดวิชา เวลาเรียนเป้าหมาย และจำนวนเงินค่าขนมร่วมกับลูกของคุณ เป้าหมายที่เด็กมีส่วนร่วมในการกำหนดด้วยตัวเองมักจะทำได้ต่อเนื่องง่ายกว่าในระยะยาว<br><br>🙋 <strong>สำหรับเด็กที่กำลังจะเรียน</strong><br>เลือกวิชาที่อยากเรียนวันนี้ แล้วค่อย ๆ ทำไปทีละขั้น ทุกครั้งที่เรียนจบหนึ่งวิชา ความรู้สึกภูมิใจจะเพิ่มขึ้น และค่าขนมที่ได้จากความพยายามของตัวเองก็จะยิ่งมีความหมายมากขึ้น มาเริ่มไปด้วยกันนะ 💪`,
+        "onboarding.welcome.quickStart": "เริ่มเลย",
         "onboarding.name.label": "✏️ กรุณากรอกชื่อของเด็กที่จะเรียน",
         "onboarding.name.desc": "เมื่อใส่ชื่อแล้ว การใช้งานจะดูเป็นธรรมชาติมากขึ้น",
         "onboarding.name.errorTooShort": "ชื่อต้องมีอย่างน้อย {{min}} ตัวอักษร",
@@ -3739,6 +3785,7 @@ export const languages = {
         "action.close": "ปิด",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "ของคุณ",
         "dashboard.header.subtitle": "ค่าขนมจากการเรียน",
         "dashboard.summary.total": "ค่าขนมรวม",
         "dashboard.progress.label": "ความคืบหน้าเป้าหมาย {percent}%",
@@ -3751,6 +3798,7 @@ export const languages = {
         "dashboard.bonus.amount": "จำนวนเงิน",
         "dashboard.bonus.errorReason": "กรุณากรอกเหตุผล 😊",
         "dashboard.bonus.errorAmount": "กรุณากรอกจำนวนเงินให้ถูกต้อง",
+        "dashboard.bonus.toggleSign": "สลับเครื่องหมาย",
         "dashboard.bonus.errorDailyCap": "คุณสามารถเพิ่มได้สูงสุดวันละ 5 รายการ",
         "statusBar.todayAmount": "วันนี้ {amount}",
         "statusBar.monthlyStreak": "เดือนนี้ {count} วัน",
@@ -3861,7 +3909,7 @@ export const languages = {
         "api.export.success": "บันทึกไฟล์เรียบร้อยแล้ว",
         "api.export.location": "ไฟล์ถูกบันทึกไว้ในโฟลเดอร์ Documents",
         "api.export.savedToDocuments": "ไฟล์ถูกบันทึกไว้ในโฟลเดอร์ Documents",
-        "api.user.default": "ผู้ใช้",
+        "api.user.default": "ของคุณ",
 
 
         // 3-1. การซื้อแบบพรีเมียมในแอป / ฟีเจอร์ล็อกการเรียน
@@ -3957,6 +4005,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Kami tidak dapat mendeteksi negara Anda secara otomatis. Silakan pilih secara manual.",
         "onboarding.welcome.title": "✨ Selamat datang di aplikasi Study Allowance.",
         "onboarding.welcome.message": `Halo Saya Yoon Papa ayah dari tiga anak 😊<br><br>Saya membuat aplikasi ini agar anak-anak bisa belajar sendiri mencatat usaha mereka dan menghubungkan usaha itu dengan hadiah secara alami.<br><br>👨‍👩‍👧‍👦 <strong>Untuk orang tua</strong><br>Tentukan bersama anak Anda mata pelajaran waktu belajar target dan jumlah uang saku. Target yang ikut ditentukan sendiri oleh anak biasanya lebih mudah dijalani dalam jangka panjang.<br><br>🙋 <strong>Untuk anak yang akan belajar</strong><br>Pilih mata pelajaran yang ingin kamu pelajari hari ini dan maju selangkah demi selangkah. Setiap mata pelajaran yang selesai akan menambah rasa pencapaian dan uang saku yang kamu dapatkan dari usaha sendiri akan terasa lebih berharga. Mari kita mulai bersama. 💪`,
+        "onboarding.welcome.quickStart": "Mulai sekarang",
         "onboarding.name.label": "✏️ Masukkan nama anak yang akan belajar.",
         "onboarding.name.desc": "Memasukkan nama akan membuat penggunaan terasa lebih natural.",
         "onboarding.name.errorTooShort": "Nama harus terdiri dari minimal {{min}} karakter.",
@@ -3982,6 +4031,7 @@ export const languages = {
         "action.close": "Tutup",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Milikmu",
         "dashboard.header.subtitle": "Uang saku belajar",
         "dashboard.summary.total": "Total uang saku",
         "dashboard.progress.label": "Progres target {percent}%",
@@ -3994,6 +4044,7 @@ export const languages = {
         "dashboard.bonus.amount": "Jumlah",
         "dashboard.bonus.errorReason": "Silakan masukkan alasan 😊",
         "dashboard.bonus.errorAmount": "Silakan masukkan jumlah yang valid.",
+        "dashboard.bonus.toggleSign": "Ubah tanda",
         "dashboard.bonus.errorDailyCap": "Anda dapat menambahkan hingga 5 item per hari.",
         "statusBar.todayAmount": "Hari ini {amount}",
         "statusBar.monthlyStreak": "Bln ini {count} hari",
@@ -4104,7 +4155,7 @@ export const languages = {
         "api.export.success": "Berhasil disimpan ke file",
         "api.export.location": "File telah disimpan di folder Documents.",
         "api.export.savedToDocuments": "File telah disimpan di folder Documents.",
-        "api.user.default": "Pengguna",
+        "api.user.default": "Milikmu",
 
 
         // 3-1. Pembelian premium dalam aplikasi / fitur kunci belajar
@@ -4199,6 +4250,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Hindi namin awtomatikong natukoy ang iyong bansa. Pakipili ito nang manu-mano.",
         "onboarding.welcome.title": "✨ Maligayang pagdating sa Study Allowance app.",
         "onboarding.welcome.message": `Kamusta Ako si Yoon Papa na ama ng tatlong anak 😊<br><br>Ginawa ko ang app na ito para makapag-aral ang mga bata nang mag-isa maitala ang kanilang pagsisikap at natural na maiugnay ang pagsisikap na iyon sa gantimpala.<br><br>👨‍👩‍👧‍👦 <strong>Para sa mga magulang</strong><br>Pag-usapan ninyo kasama ang inyong anak ang mga asignatura target na oras ng pag-aaral at halaga ng baon. Mas madaling mapanatili sa mahabang panahon ang mga layuning tinutulungan mismong buuin ng bata.<br><br>🙋 <strong>Para sa batang mag-aaral</strong><br>Piliin ang mga asignaturang gusto mong aralin ngayon at umusad nang paisa-isang hakbang. Bawat natatapos na asignatura ay nagpapalakas ng pakiramdam ng tagumpay at ang baong kinikita mo mula sa sarili mong pagsisikap ay mas nagiging mahalaga. Simulan natin nang magkasama. 💪`,
+        "onboarding.welcome.quickStart": "Magsimula na",
         "onboarding.name.label": "✏️ Ilagay ang pangalan ng batang mag-aaral.",
         "onboarding.name.desc": "Kapag may pangalan, mas natural gamitin ang app.",
         "onboarding.name.errorTooShort": "Dapat may hindi bababa sa {{min}} character ang pangalan.",
@@ -4224,6 +4276,7 @@ export const languages = {
         "action.close": "Isara",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Iyo",
         "dashboard.header.subtitle": "Baon sa pag-aaral",
         "dashboard.summary.total": "Kabuuang baon",
         "dashboard.progress.label": "Pag-usad ng layunin {percent}%",
@@ -4236,6 +4289,7 @@ export const languages = {
         "dashboard.bonus.amount": "Halaga",
         "dashboard.bonus.errorReason": "Pakilagay ang dahilan 😊",
         "dashboard.bonus.errorAmount": "Pakilagay ang tamang halaga.",
+        "dashboard.bonus.toggleSign": "Palitan ang tanda",
         "dashboard.bonus.errorDailyCap": "Hanggang 5 item lang ang puwede mong idagdag bawat araw.",
         "statusBar.todayAmount": "Ngayon {amount}",
         "statusBar.monthlyStreak": "Buwan: {count} araw",
@@ -4346,7 +4400,7 @@ export const languages = {
         "api.export.success": "Matagumpay na na-save sa file",
         "api.export.location": "Na-save ang file sa folder na Documents.",
         "api.export.savedToDocuments": "Na-save ang file sa folder na Documents.",
-        "api.user.default": "User",
+        "api.user.default": "Iyo",
 
 
         // 3-1. Premium in-app purchase / study lock feature
@@ -4442,6 +4496,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Ülkenizi otomatik olarak algılayamadık. Lütfen elle seçin.",
         "onboarding.welcome.title": "✨ Study Allowance uygulamasına hoş geldiniz.",
         "onboarding.welcome.message": `Merhaba Ben üç çocuk babası Yoon Papa 😊<br><br>Bu uygulamayı çocukların kendi başlarına çalışabilmeleri emeklerini kaydedebilmeleri ve bu emeği doğal bir şekilde ödülle ilişkilendirebilmeleri için yaptım.<br><br>👨‍👩‍👧‍👦 <strong>Ebeveynler için</strong><br>Çocuğunuzla birlikte dersleri hedef çalışma süresini ve harçlık miktarını belirleyin. Çocuğun da belirlenmesine katıldığı hedefleri uzun süre sürdürmek genelde daha kolay olur.<br><br>🙋 <strong>Çalışacak çocuk için</strong><br>Bugün çalışmak istediğin dersleri seç ve adım adım ilerle. Tamamlanan her ders başarı hissini artırır ve kendi emeğinle kazandığın harçlık daha da değerli hale gelir. Hadi birlikte başlayalım. 💪`,
+        "onboarding.welcome.quickStart": "Hemen başla",
         "onboarding.name.label": "✏️ Çalışacak çocuğun adını girin.",
         "onboarding.name.desc": "Ad girildiğinde kullanım daha doğal hissettirir.",
         "onboarding.name.errorTooShort": "Ad en az {{min}} karakter olmalıdır.",
@@ -4467,6 +4522,7 @@ export const languages = {
         "action.close": "Kapat",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Senin",
         "dashboard.header.subtitle": "Çalışma harçlığı",
         "dashboard.summary.total": "Toplam harçlık",
         "dashboard.progress.label": "Hedef ilerlemesi {percent}%",
@@ -4479,6 +4535,7 @@ export const languages = {
         "dashboard.bonus.amount": "Tutar",
         "dashboard.bonus.errorReason": "Lütfen bir neden girin 😊",
         "dashboard.bonus.errorAmount": "Lütfen geçerli bir tutar girin.",
+        "dashboard.bonus.toggleSign": "İşaret değiştir",
         "dashboard.bonus.errorDailyCap": "Günde en fazla 5 öğe ekleyebilirsiniz.",
         "statusBar.todayAmount": "Bugün {amount}",
         "statusBar.monthlyStreak": "Ay: {count} gün",
@@ -4589,7 +4646,7 @@ export const languages = {
         "api.export.success": "Dosyaya başarıyla kaydedildi",
         "api.export.location": "Dosya Documents klasörüne kaydedildi.",
         "api.export.savedToDocuments": "Dosya Documents klasörüne kaydedildi.",
-        "api.user.default": "Kullanıcı",
+        "api.user.default": "Senin",
 
 
         // 3-1. Premium uygulama içi satın alma / çalışma kilidi özelliği
@@ -4685,6 +4742,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Nie udało się automatycznie wykryć Twojego kraju. Wybierz go ręcznie.",
         "onboarding.welcome.title": "✨ Witamy w aplikacji Study Allowance.",
         "onboarding.welcome.message": `Cześć Jestem Yoon Papa ojciec trójki dzieci 😊<br><br>Stworzyłem tę aplikację, aby dzieci mogły uczyć się samodzielnie zapisywać swój wysiłek i w naturalny sposób łączyć ten wysiłek z nagrodą.<br><br>👨‍👩‍👧‍👦 <strong>Dla rodziców</strong><br>Ustalcie razem z dzieckiem przedmioty docelowy czas nauki i kwotę kieszonkowego. Cele, w których ustalaniu dziecko bierze udział, zwykle łatwiej utrzymać przez dłuższy czas.<br><br>🙋 <strong>Dla dziecka, które będzie się uczyć</strong><br>Wybierz przedmioty, których chcesz się dziś uczyć, i idź krok po kroku. Każdy ukończony przedmiot wzmacnia poczucie osiągnięcia, a kieszonkowe zdobyte własnym wysiłkiem staje się jeszcze cenniejsze. Zacznijmy razem. 💪`,
+        "onboarding.welcome.quickStart": "Zacznij teraz",
         "onboarding.name.label": "✏️ Wpisz imię dziecka, które będzie się uczyć.",
         "onboarding.name.desc": "Po wpisaniu imienia korzystanie z aplikacji staje się bardziej naturalne.",
         "onboarding.name.errorTooShort": "Imię musi mieć co najmniej {{min}} znaków.",
@@ -4710,6 +4768,7 @@ export const languages = {
         "action.close": "Zamknij",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Twój",
         "dashboard.header.subtitle": "Kieszonkowe za naukę",
         "dashboard.summary.total": "Łączne kieszonkowe",
         "dashboard.progress.label": "Postęp celu {percent}%",
@@ -4722,6 +4781,7 @@ export const languages = {
         "dashboard.bonus.amount": "Kwota",
         "dashboard.bonus.errorReason": "Wpisz powód 😊",
         "dashboard.bonus.errorAmount": "Wpisz prawidłową kwotę.",
+        "dashboard.bonus.toggleSign": "Zmień znak",
         "dashboard.bonus.errorDailyCap": "Możesz dodać maksymalnie 5 pozycji dziennie.",
         "statusBar.todayAmount": "Dzisiaj {amount}",
         "statusBar.monthlyStreak": "Ten mies.: {count} d",
@@ -4832,7 +4892,7 @@ export const languages = {
         "api.export.success": "Pomyślnie zapisano do pliku",
         "api.export.location": "Plik został zapisany w folderze Documents.",
         "api.export.savedToDocuments": "Plik został zapisany w folderze Documents.",
-        "api.user.default": "Użytkownik",
+        "api.user.default": "Twój",
 
 
         // 3-1. Zakup premium w aplikacji / funkcja blokady nauki
@@ -4927,6 +4987,7 @@ export const languages = {
         "onboarding.country.detectFailed": "We konden je land niet automatisch detecteren. Kies het handmatig.",
         "onboarding.welcome.title": "✨ Welkom bij de Study Allowance-app.",
         "onboarding.welcome.message": `Hallo Ik ben Yoon Papa vader van drie kinderen 😊<br><br>Ik heb deze app gemaakt zodat kinderen zelfstandig kunnen leren hun inspanning kunnen bijhouden en die inspanning op een natuurlijke manier kunnen koppelen aan een beloning.<br><br>👨‍👩‍👧‍👦 <strong>Voor ouders</strong><br>Bepaal samen met je kind de vakken de streeftijd voor het leren en het bedrag van het zakgeld. Doelen waarbij kinderen zelf meehelpen met bepalen zijn meestal makkelijker langer vol te houden.<br><br>🙋 <strong>Voor het kind dat gaat leren</strong><br>Kies de vakken die je vandaag wilt leren en ga stap voor stap vooruit. Elk afgerond vak vergroot het gevoel van succes en het zakgeld dat je met je eigen inzet verdient wordt nog waardevoller. Laten we samen beginnen. 💪`,
+        "onboarding.welcome.quickStart": "Nu starten",
         "onboarding.name.label": "✏️ Vul de naam in van het kind dat gaat leren.",
         "onboarding.name.desc": "Als je een naam invult, voelt het gebruik natuurlijker aan.",
         "onboarding.name.errorTooShort": "De naam moet minimaal {{min}} tekens hebben.",
@@ -4952,6 +5013,7 @@ export const languages = {
         "action.close": "Sluiten",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Jouw",
         "dashboard.header.subtitle": "Zakgeld voor school",
         "dashboard.summary.total": "Totaal zakgeld",
         "dashboard.progress.label": "Voortgang doel {percent}%",
@@ -4964,6 +5026,7 @@ export const languages = {
         "dashboard.bonus.amount": "Bedrag",
         "dashboard.bonus.errorReason": "Vul een reden in 😊",
         "dashboard.bonus.errorAmount": "Vul een geldig bedrag in.",
+        "dashboard.bonus.toggleSign": "Teken wisselen",
         "dashboard.bonus.errorDailyCap": "Je kunt maximaal 5 items per dag toevoegen.",
         "statusBar.todayAmount": "Vandaag {amount}",
         "statusBar.monthlyStreak": "{count} d · deze mnd",
@@ -5074,7 +5137,7 @@ export const languages = {
         "api.export.success": "Succesvol opgeslagen naar bestand",
         "api.export.location": "Het bestand is opgeslagen in de map Documents.",
         "api.export.savedToDocuments": "Het bestand is opgeslagen in de map Documents.",
-        "api.user.default": "Gebruiker",
+        "api.user.default": "Jouw",
 
 
         // 3-1. Premium aankoop in de app / leervergrendeling
@@ -5170,6 +5233,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Kami tidak dapat mengesan negara anda secara automatik. Sila pilih secara manual.",
         "onboarding.welcome.title": "✨ Selamat datang ke aplikasi Study Allowance.",
         "onboarding.welcome.message": `Hai Saya Yoon Papa, ayah kepada tiga orang anak 😊<br><br>Saya membina aplikasi ini supaya anak-anak boleh belajar sendiri merekodkan usaha mereka dan menghubungkan usaha itu dengan ganjaran secara semula jadi.<br><br>👨‍👩‍👧‍👦 <strong>Untuk ibu bapa</strong><br>Tentukan bersama anak anda subjek masa belajar sasaran dan jumlah duit belanja. Sasaran yang turut ditentukan sendiri oleh anak biasanya lebih mudah dikekalkan untuk jangka masa panjang.<br><br>🙋 <strong>Untuk anak yang akan belajar</strong><br>Pilih subjek yang ingin anda pelajari hari ini dan maju selangkah demi selangkah. Setiap subjek yang diselesaikan akan menambah rasa pencapaian dan duit belanja yang anda peroleh melalui usaha sendiri akan terasa lebih bermakna. Mari kita mulakan bersama. 💪`,
+        "onboarding.welcome.quickStart": "Mula sekarang",
         "onboarding.name.label": "✏️ Masukkan nama anak yang akan belajar.",
         "onboarding.name.desc": "Apabila nama dimasukkan, penggunaan aplikasi akan terasa lebih semula jadi.",
         "onboarding.name.errorTooShort": "Nama mesti mengandungi sekurang-kurangnya {{min}} aksara.",
@@ -5195,6 +5259,7 @@ export const languages = {
         "action.close": "Tutup",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Anda",
         "dashboard.header.subtitle": "Duit saku belajar",
         "dashboard.summary.total": "Jumlah duit belanja",
         "dashboard.progress.label": "Kemajuan sasaran {percent}%",
@@ -5207,6 +5272,7 @@ export const languages = {
         "dashboard.bonus.amount": "Jumlah",
         "dashboard.bonus.errorReason": "Sila masukkan sebab 😊",
         "dashboard.bonus.errorAmount": "Sila masukkan jumlah yang sah.",
+        "dashboard.bonus.toggleSign": "Tukar tanda",
         "dashboard.bonus.errorDailyCap": "Anda boleh menambah sehingga 5 item sehari.",
         "statusBar.todayAmount": "Hari ini {amount}",
         "statusBar.monthlyStreak": "Bln ini {count} hari",
@@ -5317,7 +5383,7 @@ export const languages = {
         "api.export.success": "Berjaya disimpan ke fail",
         "api.export.location": "Fail telah disimpan dalam folder Documents.",
         "api.export.savedToDocuments": "Fail telah disimpan dalam folder Documents.",
-        "api.user.default": "Pengguna",
+        "api.user.default": "Anda",
 
 
         // 3-1. Pembelian premium dalam aplikasi / ciri kunci pembelajaran
@@ -5412,6 +5478,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Таны улсыг автоматаар илрүүлж чадсангүй. Гараар сонгоно уу.",
         "onboarding.welcome.title": "✨ Study Allowance апп-д тавтай морилно уу.",
         "onboarding.welcome.message": `Сайн байна уу Би гурван хүүхдийн аав Yoon Papa 😊<br><br>Би энэ апп-ыг хүүхдүүд өөрсдөө хичээллэж өөрсдийн хичээл зүтгэлийг тэмдэглэн тэрхүү хичээл зүтгэлээ урамшуулалтай байгалийн байдлаар холбож чаддаг байхаар бүтээсэн юм.<br><br>👨‍👩‍👧‍👦 <strong>Эцэг эхчүүдэд</strong><br>Хүүхэдтэйгээ хамт хичээлүүд зорилтот суралцах хугацаа болон халаасны мөнгөний хэмжээг тохируулна уу. Хүүхэд өөрөө оролцож тогтоосон зорилгыг урт хугацаанд баримтлах нь ихэвчлэн илүү амар байдаг.<br><br>🙋 <strong>Сурах гэж буй хүүхдэд</strong><br>Өнөөдөр сурахыг хүсэж буй хичээлүүдээ сонгоод алхам алхмаар урагшлаарай. Дуусгасан хичээл бүр амжилтын мэдрэмжийг нэмэгдүүлж өөрийн хичээл зүтгэлээр олсон халаасны мөнгө улам илүү үнэ цэнтэй санагдах болно. Хамтдаа эхэлцгээе. 💪`,
+        "onboarding.welcome.quickStart": "Одоо эхлэх",
         "onboarding.name.label": "✏️ Сурах хүүхдийн нэрийг оруулна уу.",
         "onboarding.name.desc": "Нэр оруулснаар ашиглахад илүү байгалийн мэт санагдана.",
         "onboarding.name.errorTooShort": "Нэр хамгийн багадаа {{min}} тэмдэгттэй байх ёстой.",
@@ -5437,6 +5504,7 @@ export const languages = {
         "action.close": "Хаах",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Таны",
         "dashboard.header.subtitle": "Сурлагийн халаасны мөнгө",
         "dashboard.summary.total": "Нийт халаасны мөнгө",
         "dashboard.progress.label": "Зорилгын явц {percent}%",
@@ -5449,6 +5517,7 @@ export const languages = {
         "dashboard.bonus.amount": "Дүн",
         "dashboard.bonus.errorReason": "Шалтгаан оруулна уу 😊",
         "dashboard.bonus.errorAmount": "Зөв дүн оруулна уу.",
+        "dashboard.bonus.toggleSign": "Тэмдэг солих",
         "dashboard.bonus.errorDailyCap": "Та өдөрт хамгийн ихдээ 5 зүйл нэмж болно.",
         "statusBar.todayAmount": "Өнөөдөр {amount}",
         "statusBar.monthlyStreak": "Сар: {count} өдөр",
@@ -5559,7 +5628,7 @@ export const languages = {
         "api.export.success": "Файлд амжилттай хадгаллаа",
         "api.export.location": "Файл Documents хавтсанд хадгалагдлаа.",
         "api.export.savedToDocuments": "Файл Documents хавтсанд хадгалагдлаа.",
-        "api.user.default": "Хэрэглэгч",
+        "api.user.default": "Таны",
 
 
         // 3-1. Апп доторх premium худалдан авалт / суралцах түгжээ
@@ -5655,6 +5724,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Emme pystyneet tunnistamaan maatasi automaattisesti. Valitse se itse.",
         "onboarding.welcome.title": "✨ Tervetuloa Study Allowance -sovellukseen.",
         "onboarding.welcome.message": `Hei Olen Yoon Papa, kolmen lapsen isä 😊<br><br>Tein tämän sovelluksen, jotta lapset voivat opiskella itsenäisesti, kirjata oman ahkeruutensa ja yhdistää sen luonnollisesti palkkioon.<br><br>👨‍👩‍👧‍👦 <strong>Vanhemmille</strong><br>Päättäkää yhdessä lapsenne kanssa oppiaineet, tavoiteaika opiskelulle ja taskurahan määrä. Tavoitteita, joiden asettamiseen lapsi itse osallistuu, on yleensä helpompi noudattaa pitkään.<br><br>🙋 <strong>Opiskelevalle lapselle</strong><br>Valitse aineet, joita haluat opiskella tänään, ja etene askel kerrallaan. Jokainen valmis aine kasvattaa onnistumisen tunnetta, ja omalla vaivalla ansaittu taskuraha tuntuu vielä arvokkaammalta. Aloitetaan yhdessä. 💪`,
+        "onboarding.welcome.quickStart": "Aloita heti",
         "onboarding.name.label": "✏️ Kirjoita opiskelevan lapsen nimi.",
         "onboarding.name.desc": "Kun nimi on lisätty, sovelluksen käyttö tuntuu luonnollisemmalta.",
         "onboarding.name.errorTooShort": "Nimen on oltava vähintään {{min}} merkkiä pitkä.",
@@ -5680,6 +5750,7 @@ export const languages = {
         "action.close": "Sulje",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Sinun",
         "dashboard.header.subtitle": "Opiskelun taskuraha",
         "dashboard.summary.total": "Taskurahaa yhteensä",
         "dashboard.progress.label": "Tavoitteen edistyminen {percent}%",
@@ -5692,6 +5763,7 @@ export const languages = {
         "dashboard.bonus.amount": "Summa",
         "dashboard.bonus.errorReason": "Kirjoita syy 😊",
         "dashboard.bonus.errorAmount": "Anna kelvollinen summa.",
+        "dashboard.bonus.toggleSign": "Vaihda etumerkki",
         "dashboard.bonus.errorDailyCap": "Voit lisätä enintään 5 kohtaa päivässä.",
         "statusBar.todayAmount": "Tänään {amount}",
         "statusBar.monthlyStreak": "Kuun {count} pv",
@@ -5802,7 +5874,7 @@ export const languages = {
         "api.export.success": "Tallennettu tiedostoon onnistuneesti",
         "api.export.location": "Tiedosto on tallennettu Documents-kansioon.",
         "api.export.savedToDocuments": "Tiedosto on tallennettu Documents-kansioon.",
-        "api.user.default": "Käyttäjä",
+        "api.user.default": "Sinun",
 
 
         // 3-1. Premium-ostos sovelluksessa / opiskelun lukitusominaisuus
@@ -5897,6 +5969,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Vi kunde inte identifiera ditt land automatiskt. Välj det manuellt.",
         "onboarding.welcome.title": "✨ Välkommen till Study Allowance-appen.",
         "onboarding.welcome.message": `Hej Jag är Yoon Papa, pappa till tre barn 😊<br><br>Jag skapade den här appen för att barn ska kunna studera själva, registrera sina ansträngningar och på ett naturligt sätt koppla sina ansträngningar till en belöning.<br><br>👨‍👩‍👧‍👦 <strong>För föräldrar</strong><br>Bestäm tillsammans med ditt barn vilka ämnen, vilken studietid som mål och hur mycket veckopeng eller månadspeng barnet ska få. Mål som barnet själv är med och bestämmer brukar vara lättare att hålla fast vid under en längre tid.<br><br>🙋 <strong>För barnet som ska studera</strong><br>Välj de ämnen du vill studera i dag och ta ett steg i taget. Varje ämne som blir klart stärker känslan av att lyckas, och pengarna du tjänar genom din egen ansträngning känns ännu mer värdefulla. Låt oss börja tillsammans. 💪`,
+        "onboarding.welcome.quickStart": "Börja nu",
         "onboarding.name.label": "✏️ Ange namnet på barnet som ska studera.",
         "onboarding.name.desc": "När ett namn är ifyllt känns appen mer naturlig att använda.",
         "onboarding.name.errorTooShort": "Namnet måste vara minst {{min}} tecken långt.",
@@ -5922,6 +5995,7 @@ export const languages = {
         "action.close": "Stäng",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Ditt",
         "dashboard.header.subtitle": "Studiepengar",
         "dashboard.summary.total": "Totalt belopp",
         "dashboard.progress.label": "Måluppfyllelse {percent}%",
@@ -5934,6 +6008,7 @@ export const languages = {
         "dashboard.bonus.amount": "Belopp",
         "dashboard.bonus.errorReason": "Ange en orsak 😊",
         "dashboard.bonus.errorAmount": "Ange ett giltigt belopp.",
+        "dashboard.bonus.toggleSign": "Byt tecken",
         "dashboard.bonus.errorDailyCap": "Du kan lägga till högst 5 poster per dag.",
         "statusBar.todayAmount": "I dag {amount}",
         "statusBar.monthlyStreak": "{count} d · mån",
@@ -6044,7 +6119,7 @@ export const languages = {
         "api.export.success": "Sparades till fil",
         "api.export.location": "Filen har sparats i mappen Documents.",
         "api.export.savedToDocuments": "Filen har sparats i mappen Documents.",
-        "api.user.default": "Användare",
+        "api.user.default": "Ditt",
 
 
         // 3-1. Premiumköp i appen / studielås-funktion
@@ -6140,6 +6215,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Vi kunne ikke oppdage landet ditt automatisk. Velg det manuelt.",
         "onboarding.welcome.title": "✨ Velkommen til Study Allowance-appen.",
         "onboarding.welcome.message": `Hei Jeg er Yoon Papa, far til tre barn 😊<br><br>Jeg laget denne appen for at barn skal kunne studere på egen hånd, registrere innsatsen sin og på en naturlig måte knytte innsatsen til en belønning.<br><br>👨‍👩‍👧‍👦 <strong>For foreldre</strong><br>Bestem sammen med barnet ditt hvilke fag, hvor lang studietid som skal være målet, og hvor mye lommepenger barnet skal få. Mål som barnet selv er med på å bestemme, er som regel lettere å holde over tid.<br><br>🙋 <strong>For barnet som skal studere</strong><br>Velg fagene du vil studere i dag, og gå fram ett steg om gangen. Hvert fag du fullfører, gir en sterkere følelse av mestring, og lommepengene du tjener gjennom egen innsats, blir enda mer verdifulle. La oss starte sammen. 💪`,
+        "onboarding.welcome.quickStart": "Start nå",
         "onboarding.name.label": "✏️ Skriv inn navnet på barnet som skal studere.",
         "onboarding.name.desc": "Når du skriver inn et navn, føles appen mer naturlig å bruke.",
         "onboarding.name.errorTooShort": "Navnet må være minst {{min}} tegn langt.",
@@ -6165,6 +6241,7 @@ export const languages = {
         "action.close": "Lukk",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Ditt",
         "dashboard.header.subtitle": "Skolelommepenger",
         "dashboard.summary.total": "Lommepenger totalt",
         "dashboard.progress.label": "Målframgang {percent}%",
@@ -6177,6 +6254,7 @@ export const languages = {
         "dashboard.bonus.amount": "Beløp",
         "dashboard.bonus.errorReason": "Skriv inn en grunn 😊",
         "dashboard.bonus.errorAmount": "Skriv inn et gyldig beløp.",
+        "dashboard.bonus.toggleSign": "Bytt fortegn",
         "dashboard.bonus.errorDailyCap": "Du kan legge til opptil 5 elementer per dag.",
         "statusBar.todayAmount": "I dag {amount}",
         "statusBar.monthlyStreak": "{count} d · denne mnd",
@@ -6287,7 +6365,7 @@ export const languages = {
         "api.export.success": "Lagret til fil",
         "api.export.location": "Filen er lagret i mappen Documents.",
         "api.export.savedToDocuments": "Filen er lagret i mappen Documents.",
-        "api.user.default": "Bruker",
+        "api.user.default": "Ditt",
 
 
         // 3-1. Premiumkjøp i appen / studielås-funksjon
@@ -6383,6 +6461,7 @@ export const languages = {
         "onboarding.country.detectFailed": "Vi kunne ikke registrere dit land automatisk. Vælg det manuelt.",
         "onboarding.welcome.title": "✨ Velkommen til Study Allowance-appen.",
         "onboarding.welcome.message": `Hej Jeg er Yoon Papa, far til tre børn 😊<br><br>Jeg har lavet denne app, så børn kan studere selvstændigt, registrere deres indsats og på en naturlig måde forbinde indsatsen med en belønning.<br><br>👨‍👩‍👧‍👦 <strong>Til forældre</strong><br>Bestem sammen med dit barn fagene, den ønskede studietid og beløbet i lommepenge. Mål, som barnet selv er med til at sætte, er som regel lettere at holde fast i over længere tid.<br><br>🙋 <strong>Til barnet, der skal studere</strong><br>Vælg de fag, du vil studere i dag, og gå frem skridt for skridt. Hvert fag, du gør færdigt, styrker følelsen af at lykkes, og de lommepenge, du tjener gennem din egen indsats, bliver endnu mere værdifulde. Lad os begynde sammen. 💪`,
+        "onboarding.welcome.quickStart": "Start nu",
         "onboarding.name.label": "✏️ Indtast navnet på barnet, der skal studere.",
         "onboarding.name.desc": "Når et navn er indtastet, føles appen mere naturlig at bruge.",
         "onboarding.name.errorTooShort": "Navnet skal være mindst {{min}} tegn langt.",
@@ -6408,6 +6487,7 @@ export const languages = {
         "action.close": "Luk",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "Dit",
         "dashboard.header.subtitle": "Skolelommepenge",
         "dashboard.summary.total": "Lommepenge i alt",
         "dashboard.progress.label": "Målfremgang {percent}%",
@@ -6420,6 +6500,7 @@ export const languages = {
         "dashboard.bonus.amount": "Beløb",
         "dashboard.bonus.errorReason": "Indtast en årsag 😊",
         "dashboard.bonus.errorAmount": "Indtast et gyldigt beløb.",
+        "dashboard.bonus.toggleSign": "Skift fortegn",
         "dashboard.bonus.errorDailyCap": "Du kan tilføje op til 5 punkter om dagen.",
         "statusBar.todayAmount": "I dag {amount}",
         "statusBar.monthlyStreak": "{count} d · den md",
@@ -6530,7 +6611,7 @@ export const languages = {
         "api.export.success": "Gemt til fil",
         "api.export.location": "Filen er gemt i mappen Documents.",
         "api.export.savedToDocuments": "Filen er gemt i mappen Documents.",
-        "api.user.default": "Bruger",
+        "api.user.default": "Dit",
 
 
         // 3-1. Premiumkøb i appen / studielås-funktion
@@ -6626,6 +6707,7 @@ export const languages = {
         "onboarding.country.detectFailed": "לא הצלחנו לזהות את המדינה שלך באופן אוטומטי. יש לבחור אותה ידנית.",
         "onboarding.welcome.title": "✨ ברוכים הבאים לאפליקציית Study Allowance.",
         "onboarding.welcome.message": `שלום אני Yoon Papa, אבא לשלושה ילדים 😊<br><br>יצרתי את האפליקציה הזו כדי שילדים יוכלו ללמוד בעצמם, לתעד את המאמץ שלהם, ולחבר את המאמץ הזה לתגמול בצורה טבעית.<br><br>👨‍👩‍👧‍👦 <strong>להורים</strong><br>קבעו יחד עם הילד את המקצועות, זמן הלימוד היעד, ואת סכום דמי הכיס. מטרות שהילד שותף בקביעתן בדרך כלל קל יותר לשמור לאורך זמן.<br><br>🙋 <strong>לילד שלומד</strong><br>בחר את המקצועות שברצונך ללמוד היום והתקדם צעד אחר צעד. כל מקצוע שמושלם מחזק את תחושת ההישג, ודמי הכיס שמרוויחים בזכות המאמץ האישי הופכים למשמעותיים עוד יותר. בואו נתחיל יחד. 💪`,
+        "onboarding.welcome.quickStart": "התחל עכשיו",
         "onboarding.name.label": "✏️ יש להזין את שם הילד שלומד.",
         "onboarding.name.desc": "כאשר מזינים שם, השימוש באפליקציה מרגיש טבעי יותר.",
         "onboarding.name.errorTooShort": "השם חייב להכיל לפחות {{min}} תווים.",
@@ -6651,6 +6733,7 @@ export const languages = {
         "action.close": "סגירה",
         
         "dashboard.header.user": "{name}",
+        "dashboard.header.userAnonymous": "שלך",
         "dashboard.header.subtitle": "דמי כיס ללמידה",
         "dashboard.summary.total": "סך כל דמי הכיס",
         "dashboard.progress.label": "התקדמות היעד {percent}%",
@@ -6663,6 +6746,7 @@ export const languages = {
         "dashboard.bonus.amount": "סכום",
         "dashboard.bonus.errorReason": "יש להזין סיבה 😊",
         "dashboard.bonus.errorAmount": "יש להזין סכום תקין.",
+        "dashboard.bonus.toggleSign": "החלפת סימן",
         "dashboard.bonus.errorDailyCap": "אפשר להוסיף עד 5 פריטים ביום.",
         "statusBar.todayAmount": "היום {amount}",
         "statusBar.monthlyStreak": "החודש: {count} ימים",
@@ -6773,7 +6857,7 @@ export const languages = {
         "api.export.success": "נשמר לקובץ בהצלחה",
         "api.export.location": "הקובץ נשמר בתיקיית Documents.",
         "api.export.savedToDocuments": "הקובץ נשמר בתיקיית Documents.",
-        "api.user.default": "משתמש",
+        "api.user.default": "שלך",
 
 
         // 3-1. רכישת פרימיום בתוך האפליקציה / תכונת נעילת לימוד
