@@ -1,5 +1,5 @@
 // Service Worker for Study Allowance App
-const CACHE_VERSION = '1.9.6';
+const CACHE_VERSION = '1.9.7';
 const CACHE_NAME = `study-allowance-app-v${CACHE_VERSION}`;
 const urlsToCache = [
   '/',

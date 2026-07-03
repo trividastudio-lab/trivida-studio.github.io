@@ -323,7 +323,7 @@ html.platform-android .header {
 .user-name {
   position: relative;
   z-index: 1;
-  font-size: 2.8125rem;
+  font-size: 2.19375rem !important;
   font-weight: 800;
   color: #fff;
   margin-top: 4px;
@@ -347,7 +347,7 @@ html.platform-android .header {
 .app-subtitle {
   position: relative;
   z-index: 1;
-  font-size: 1.6875rem;
+  font-size: 1.31625rem !important;
   font-weight: 700;
   color: #fff;
   text-shadow:
@@ -1212,8 +1212,8 @@ html.env-web #appContainer.timer-active .subjects-section {
   flex: 0 0 auto;
   align-self: stretch;
   width: auto;
-  aspect-ratio: 1;
-  min-width: 2.75rem;
+  aspect-ratio: 4 / 6;
+  min-width: 0;
   border: none;
   border-right: 1px solid #e5e7eb;
   border-radius: 0;
@@ -1274,6 +1274,9 @@ html.env-web #appContainer.timer-active .subjects-section {
 .add-additional .additional-amount-wrapper .currency-symbol:last-child {
   order: 2;
   padding: 0 8px 0 4px;
+}
+.add-additional .additional-amount-wrapper .additional-amount-sign-btn + .currency-symbol {
+  padding-inline-start: 0.5ch;
 }
 .add-additional .additional-amount-wrapper:focus-within {
   outline: 0;
@@ -3241,10 +3244,10 @@ html.env-web #appContainer.timer-active .subjects-section {
 .summary-header {
   position: relative;
   z-index: 1;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 .summary-header.goal-achieved-active {
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 .summary-title {
   position: relative;
@@ -3257,7 +3260,7 @@ html.env-web #appContainer.timer-active .subjects-section {
   font-weight: 800;
   display: block;
   line-height: 1.2;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -3278,7 +3281,7 @@ html.env-web #appContainer.timer-active .subjects-section {
   font-weight: 800;
   display: block;
   line-height: 1.2;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   letter-spacing: 2px;
   color: transparent;
   background-image: linear-gradient(
@@ -3329,7 +3332,7 @@ html.env-web #appContainer.timer-active .subjects-section {
 .summary-progress {
   position: relative;
   z-index: 1;
-  margin-top: 20px;
+  margin-top: 12px;
 }
 .progress-percentage {
   font-size: 1rem;
@@ -4290,9 +4293,26 @@ html.env-web #appContainer.timer-active .subjects-section {
     border-radius: 0;
     min-height: 100vh;
   }
+  .header {
+    min-height: 104px;
+  }
+  html.platform-android .header {
+    min-height: calc(104px * 1.28);
+  }
+  .fixed-header {
+    padding-bottom: 0;
+  }
+  .title-section {
+    gap: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
   .user-name {
-    font-size: 1.875rem;
+    font-size: 2.315625rem !important;
     color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.2;
     text-shadow:
       -1px -1px 0 #fff,
       1px -1px 0 #fff,
@@ -4305,8 +4325,10 @@ html.env-web #appContainer.timer-active .subjects-section {
     transition: font-size 0.2s;
   }
   .app-subtitle {
-    font-size: 1.40625rem;
+    font-size: 1.736719rem !important;
     color: #000;
+    margin: 0;
+    line-height: 1.2;
     text-shadow:
       -1px -1px 0 #fff,
       1px -1px 0 #fff,
@@ -4322,19 +4344,19 @@ html.env-web #appContainer.timer-active .subjects-section {
   .additional-section {
     margin-top: 6px;
     margin-bottom: 4px;
-    padding: 10px 10px 6px;
+    padding: 10px 10px 4px;
     background: #e8e8e8;
     border-radius: 16px;
     border: 1px solid #e5e7eb;
   }
   .additional-section h3 {
     font-size: 1.0625rem;
-    margin-bottom: 14px;
+    margin-bottom: 7px;
     padding-left: 0;
   }
   .add-additional {
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     grid-template-columns: minmax(0, 4fr) minmax(0, 2.95fr) minmax(0, 1.35fr);
   }
   .add-additional .additional-amount-wrapper {
@@ -4342,7 +4364,8 @@ html.env-web #appContainer.timer-active .subjects-section {
     overflow: hidden;
   }
   .add-additional .additional-amount-sign-btn {
-    min-width: 2.5rem;
+    aspect-ratio: 4 / 6;
+    min-width: 0;
     font-size: 1rem;
   }
   .add-additional .additional-amount-wrapper input {
@@ -4351,7 +4374,8 @@ html.env-web #appContainer.timer-active .subjects-section {
   }
   .add-additional .additional-amount-wrapper .currency-symbol {
     font-size: 0.8125rem;
-    padding: 0 2px;
+    padding-block: 0;
+    padding-inline-end: 2px;
     flex-shrink: 0;
   }
   .add-additional > #additionalReason {

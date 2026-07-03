@@ -15,46 +15,52 @@ const APP_PACKAGE_ID = 'com.yoonpapa3.studyapp';
 const STORAGE_KEY = 'studyAllowanceAppData';
 const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=${APP_PACKAGE_ID}`;
 
-/** 인앱 리뷰 플러그인: Bridge 주입 객체와 registerPlugin 폴백 (LocalNotifications와 동일 패턴). */
-function getInAppReviewPlugin() {
-    const injected = window.Capacitor?.Plugins?.InAppReview;
-    if (injected && typeof injected.requestReview === 'function') {
-        return injected;
-    }
-    try {
-        const reg = window.Capacitor?.registerPlugin;
-        if (typeof reg === 'function') {
-            const p = reg.call(window.Capacitor, 'InAppReview');
-            if (p && typeof p.requestReview === 'function') {
-                return p;
-            }
-        }
-    } catch (_) {}
-    return null;
-}
-
-/** Play 스토어 앱 상세 열기 (Android WebView에서 window.open이 막히는 경우가 많아 @capacitor/browser 사용). */
+/** 설정의 '평점 주기' 버튼: Play Store 상세로 이동 (인앱 리뷰 API는 할당량·무표시 성공 때문에 사용하지 않음). */
 async function openPlayStoreAppListing() {
-    const url = PLAY_STORE_URL;
-    try {
-        const Capacitor = window.Capacitor;
-        const isNative = typeof Capacitor?.isNativePlatform === 'function' && Capacitor.isNativePlatform() === true;
-        const Browser = Capacitor?.Plugins?.Browser;
-        if (isNative && Browser && typeof Browser.open === 'function') {
-            await Browser.open({ url });
+    const httpsUrl = PLAY_STORE_URL;
+    const Capacitor = window.Capacitor;
+    const isNative = Capacitor?.isNativePlatform?.() === true;
+    const platform = Capacitor?.getPlatform?.();
+
+    if (isNative && platform === 'android') {
+        try {
+            const intentUrl =
+                `intent://details?id=${APP_PACKAGE_ID}#Intent;scheme=market;package=com.android.vending;` +
+                `S.browser_fallback_url=${encodeURIComponent(httpsUrl)};end`;
+            window.location.href = intentUrl;
             return;
+        } catch (e) {
+            utils.logDevWarning('Play Store intent 실패', e);
         }
-    } catch (e) {
-        utils.logDevWarning('Play Store Browser.open 실패', e);
+        try {
+            const Browser = Capacitor?.Plugins?.Browser;
+            if (Browser && typeof Browser.open === 'function') {
+                await Browser.open({ url: httpsUrl });
+                return;
+            }
+        } catch (e) {
+            utils.logDevWarning('Play Store Browser.open 실패', e);
+        }
+    } else if (isNative) {
+        try {
+            const Browser = Capacitor?.Plugins?.Browser;
+            if (Browser && typeof Browser.open === 'function') {
+                await Browser.open({ url: httpsUrl });
+                return;
+            }
+        } catch (e) {
+            utils.logDevWarning('Play Store Browser.open 실패', e);
+        }
     }
+
     try {
-        const w = window.open(url, '_blank', 'noopener,noreferrer');
+        const w = window.open(httpsUrl, '_blank', 'noopener,noreferrer');
         if (!w || w.closed) {
-            window.location.href = url;
+            window.location.href = httpsUrl;
         }
     } catch (_) {
         try {
-            window.location.href = url;
+            window.location.href = httpsUrl;
         } catch (e2) {
             utils.logDevWarning('Play Store 열기 실패', e2);
         }
@@ -1301,31 +1307,9 @@ async function handleResetData() {
 
 async function handleRateApp() {
     try {
-        const Capacitor = window.Capacitor;
-        const isNative = Capacitor?.isNativePlatform?.() === true;
-
-        if (!isNative) {
-            await openPlayStoreAppListing();
-            return;
-        }
-
-        const InAppReview = getInAppReviewPlugin();
-        if (!InAppReview) {
-            await openPlayStoreAppListing();
-            return;
-        }
-
-        try {
-            await InAppReview.requestReview();
-        } catch (_) {
-            await openPlayStoreAppListing();
-        }
-    } catch (_) {
-        try {
-            await openPlayStoreAppListing();
-        } catch (e) {
-            utils.logDevWarning('Play Store 열기 실패', e);
-        }
+        await openPlayStoreAppListing();
+    } catch (e) {
+        utils.logDevWarning('Play Store 열기 실패', e);
     }
 }
 
@@ -2494,7 +2478,10 @@ export function setupEventListeners() {
         if (target.id === 'subjectsInfoBtn') { showSettingsInfoPopup('settings.subjects.help'); return; }
         if (target.id === 'goalInfoBtn') { showSettingsInfoPopup('settings.goal.info'); return; }
         if (target.id === 'saveSettingsBtn') handleSaveSettings();
-        if (target.id === 'rateAppBtn') handleRateApp();
+        if (target.closest('#rateAppBtn')) {
+            void handleRateApp();
+            return;
+        }
         if (target.id === 'donateDeveloperBtn') {
             void showDonationPromptModal({ autoTrackShown: false });
             return;
